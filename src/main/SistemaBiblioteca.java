@@ -4,6 +4,7 @@
  */
 package main;
 
+import view.Login;
 import view.utils.Base2;
 import view.MainWindow;
 
@@ -15,7 +16,7 @@ public class SistemaBiblioteca {
      */
     public static void main(String[] args) {
         //MainWindow.main(null);
-        MainWindow.main(null);
+        Login.main(null);
     }
     
 }
