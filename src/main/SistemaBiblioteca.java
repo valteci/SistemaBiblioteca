@@ -4,17 +4,18 @@
  */
 package main;
 
-/**
- *
- * @author puc
- */
+import view.utils.Base2;
+import view.MainWindow;
+
+
 public class SistemaBiblioteca {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //MainWindow.main(null);
+        MainWindow.main(null);
     }
     
 }
