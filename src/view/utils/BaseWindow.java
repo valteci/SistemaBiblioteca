@@ -6,14 +6,20 @@ package view.utils;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -70,7 +76,7 @@ public abstract class BaseWindow extends javax.swing.JFrame {
                     
                     @Override
                     public void mouseEntered(MouseEvent e) {
-                        mouseEntrarBotao(e);
+                        mouseEntrarBotao(e);                        
                     }
                     
                     @Override
@@ -111,11 +117,13 @@ public abstract class BaseWindow extends javax.swing.JFrame {
     private void mouseEntrarBotao(MouseEvent evt) {
         JButton botao = (JButton) evt.getSource();
         botao.setBackground(PaletaCores.BOTAO_ENTER);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
     
     private void mouseSairBotao(MouseEvent evt) {
         JButton botao = (JButton) evt.getSource();
         botao.setBackground(PaletaCores.BOTAO);
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     private void configurarPosicoes() {
@@ -142,6 +150,23 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         
     }
     
+    protected void carregarImagem(JLabel label, String nomeImagem) {
+        ImageIcon imagemIcon    = new ImageIcon(pastaImagem + nomeImagem);
+        Image imagem            = imagemIcon.getImage();        
+        int larguraLabel        = label.getWidth();
+        int alturaLabel         = label.getHeight();
+        
+        Image novaImagem = imagem.getScaledInstance(
+                larguraLabel,
+                alturaLabel,
+                Image.SCALE_AREA_AVERAGING
+        );
+        
+        ImageIcon imagemRedimensionada = new ImageIcon(novaImagem);
+
+        label.setIcon(imagemRedimensionada);
+    }
+    
     protected void exibirMesagemDeErro(String mensagem) {
         JOptionPane.showMessageDialog(
                 rootPane,
@@ -158,5 +183,15 @@ public abstract class BaseWindow extends javax.swing.JFrame {
                 "ERRO",
                 JOptionPane.INFORMATION_MESSAGE
         );
+    }
+    
+    protected boolean validarEmail(String email) {
+        String regex    = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-]" +
+                          "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        
+        Pattern pattern = Pattern.compile(regex);       
+        Matcher matcher = pattern.matcher(email);
+        
+        return matcher.matches();
     }
 }

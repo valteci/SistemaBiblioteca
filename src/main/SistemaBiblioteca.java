@@ -5,8 +5,6 @@
 package main;
 
 import view.Login;
-import view.utils.Base2;
-import view.MainWindow;
 
 
 public class SistemaBiblioteca {

@@ -33,14 +33,14 @@ public class MainWindow extends BaseWindow {
 
         jPanelFundo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        lb_livros = new javax.swing.JLabel();
+        bt_livros = new javax.swing.JButton();
+        lb_colaboradores = new javax.swing.JLabel();
+        bt_colaboradores = new javax.swing.JButton();
+        lb_emprestimos = new javax.swing.JLabel();
+        bt_emprestimos = new javax.swing.JButton();
+        lb_reservas = new javax.swing.JLabel();
+        bt_reservas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -51,39 +51,50 @@ public class MainWindow extends BaseWindow {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MENU");
         jPanelFundo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1270, 40));
-        jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 170, 110));
+        jPanelFundo.add(lb_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 170, 110));
 
-        jButton8.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton8.setText("LIVROS");
-        jButton8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        jButton8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 605, 290));
-        jPanelFundo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 170, 110));
+        bt_livros.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_livros.setText("LIVROS");
+        bt_livros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_livros.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanelFundo.add(bt_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 605, 290));
+        jPanelFundo.add(lb_colaboradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 170, 110));
 
-        jButton10.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton10.setText("COLABORADORES");
-        jButton10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        jButton10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 605, 290));
-        jPanelFundo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 170, 110));
+        bt_colaboradores.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_colaboradores.setText("COLABORADORES");
+        bt_colaboradores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_colaboradores.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_colaboradores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_colaboradoresActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_colaboradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 605, 290));
+        jPanelFundo.add(lb_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 170, 110));
 
-        jButton9.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton9.setText("EMPRÉSTIMOS");
-        jButton9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        jButton9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 605, 290));
-        jPanelFundo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 170, 110));
+        bt_emprestimos.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_emprestimos.setText("EMPRÉSTIMOS");
+        bt_emprestimos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_emprestimos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanelFundo.add(bt_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 605, 290));
+        jPanelFundo.add(lb_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 170, 110));
 
-        jButton5.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        jButton5.setText("RESERVAS");
-        jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        jButton5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 605, 290));
+        bt_reservas.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_reservas.setText("RESERVAS");
+        bt_reservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_reservas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanelFundo.add(bt_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 605, 290));
 
         getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bt_colaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_colaboradoresActionPerformed
+        
+        this.setVisible(false);
+        TelaColaboradores.main(null);
+    }//GEN-LAST:event_bt_colaboradoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,16 +135,16 @@ public class MainWindow extends BaseWindow {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton bt_colaboradores;
+    private javax.swing.JButton bt_emprestimos;
+    private javax.swing.JButton bt_livros;
+    private javax.swing.JButton bt_reservas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JLabel lb_colaboradores;
+    private javax.swing.JLabel lb_emprestimos;
+    private javax.swing.JLabel lb_livros;
+    private javax.swing.JLabel lb_reservas;
     // End of variables declaration//GEN-END:variables
 
 
@@ -141,73 +152,11 @@ public class MainWindow extends BaseWindow {
     private void setarImagemBotoes() {
         try {
             
-            ImageIcon imagemIcon = new ImageIcon(pastaImagem + "livros.png");
-            Image imagem = imagemIcon.getImage();
-
-            // Obtém o tamanho da JLabel
-            int larguraLabel = 190; // Substitua pelo tamanho desejado
-            int alturaLabel = 100; // Substitua pelo tamanho desejado
-
-            // Redimensiona a imagem para o tamanho da JLabel
-            Image novaImagem = imagem.getScaledInstance(larguraLabel, alturaLabel, Image.SCALE_AREA_AVERAGING);
-
-            // Cria um ImageIcon com a imagem redimensionada
-            ImageIcon imagemRedimensionada = new ImageIcon(novaImagem);
-
-            jLabel2.setIcon(imagemRedimensionada);
-            
-            
-            
-            ImageIcon imagemIcon2 = new ImageIcon(pastaImagem + "colaboradores.png");
-            Image imagem2 = imagemIcon2.getImage();
-
-            // Obtém o tamanho da JLabel
-            int larguraLabel2 = 170; // Substitua pelo tamanho desejado
-            int alturaLabel2 = 110; // Substitua pelo tamanho desejado
-
-            // Redimensiona a imagem para o tamanho da JLabel
-            Image novaImagem2 = imagem2.getScaledInstance(larguraLabel2, alturaLabel2, Image.SCALE_AREA_AVERAGING);
-
-            // Cria um ImageIcon com a imagem redimensionada
-            ImageIcon imagemRedimensionada2 = new ImageIcon(novaImagem2);
-
-            jLabel3.setIcon(imagemRedimensionada2);
-            
-            
-            
-            ImageIcon imagemIcon3 = new ImageIcon(pastaImagem + "emprestimos.png");
-            Image imagem3 = imagemIcon3.getImage();
-
-            // Obtém o tamanho da JLabel
-            int larguraLabel3 = 170; // Substitua pelo tamanho desejado
-            int alturaLabel3 = 110; // Substitua pelo tamanho desejado
-
-            // Redimensiona a imagem para o tamanho da JLabel
-            Image novaImagem3 = imagem3.getScaledInstance(larguraLabel3, alturaLabel3, Image.SCALE_AREA_AVERAGING);
-
-            // Cria um ImageIcon com a imagem redimensionada
-            ImageIcon imagemRedimensionada3 = new ImageIcon(novaImagem3);
-
-            jLabel4.setIcon(imagemRedimensionada3);
-            
-            
-            
-            ImageIcon imagemIcon4 = new ImageIcon(pastaImagem + "reservas.png");
-            Image imagem4 = imagemIcon4.getImage();
-
-            // Obtém o tamanho da JLabel
-            int larguraLabel4 = 170; // Substitua pelo tamanho desejado
-            int alturaLabel4 = 110; // Substitua pelo tamanho desejado
-
-            // Redimensiona a imagem para o tamanho da JLabel
-            Image novaImagem4 = imagem4.getScaledInstance(larguraLabel4, alturaLabel4, Image.SCALE_AREA_AVERAGING);
-
-            // Cria um ImageIcon com a imagem redimensionada
-            ImageIcon imagemRedimensionada4 = new ImageIcon(novaImagem4);
-
-            jLabel5.setIcon(imagemRedimensionada4);
-            
-            
+            carregarImagem(lb_livros, "livros.png");
+            carregarImagem(lb_colaboradores, "colaboradores.png");
+            carregarImagem(lb_emprestimos, "emprestimos.png");
+            carregarImagem(lb_reservas, "reservas.png");                                    
+                        
         } catch (Exception e) {
             exibirMesagemDeErro(e.getMessage());
         }
