@@ -4,6 +4,7 @@
  */
 package view;
 
+import javax.swing.JComboBox;
 import view.utils.BaseWindow;
 
 /**
@@ -49,7 +50,7 @@ public class TelaCadastrarColaboradores extends BaseWindow {
         txt_email = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txt_telefone = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        lb_numeroOAB = new javax.swing.JLabel();
         txt_numeroOAB = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +106,11 @@ public class TelaCadastrarColaboradores extends BaseWindow {
 
         cb_cargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADVOGADO", "ESTAGIÁRIO", "FUNCIONÁRIO" }));
+        cb_cargo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_cargoItemStateChanged(evt);
+            }
+        });
         jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 73, 320, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -121,9 +127,9 @@ public class TelaCadastrarColaboradores extends BaseWindow {
         txt_telefone.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 193, 320, 30));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setText("Número Na OAB:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
+        lb_numeroOAB.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_numeroOAB.setText("Número Na OAB:");
+        jPanel1.add(lb_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, -1));
 
         txt_numeroOAB.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel1.add(txt_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 233, 320, 30));
@@ -147,6 +153,20 @@ public class TelaCadastrarColaboradores extends BaseWindow {
         else
             exibirMensagemInformativa("email inválido!");
     }//GEN-LAST:event_bt_cadastrarActionPerformed
+
+    private void cb_cargoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_cargoItemStateChanged
+        JComboBox texto = (JComboBox) evt.getSource();
+        if (! texto.getSelectedItem().toString().equalsIgnoreCase(
+                "advogado")
+           ) {
+            txt_numeroOAB.setVisible(false);
+            lb_numeroOAB.setVisible(false);
+        }
+        else {
+            txt_numeroOAB.setVisible(true);
+            lb_numeroOAB.setVisible(true);
+        }
+    }//GEN-LAST:event_cb_cargoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -193,10 +213,10 @@ public class TelaCadastrarColaboradores extends BaseWindow {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JLabel lb_numeroOAB;
     private javax.swing.JLabel lb_voltar;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_matricula;
