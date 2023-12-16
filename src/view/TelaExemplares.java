@@ -5,12 +5,12 @@
 package view;
 import view.utils.*;
 
-public class TelaLivros extends BaseWindow {
+public class TelaExemplares extends BaseWindow {
 
     /**
      * Creates new form TelaColaboradores
      */
-    public TelaLivros() {
+    public TelaExemplares() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -38,12 +38,16 @@ public class TelaLivros extends BaseWindow {
         jPanel5 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bt_alterarPorId = new javax.swing.JButton();
         bt_alterarSelecionado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lb_voltar = new javax.swing.JLabel();
         bt_voltar = new javax.swing.JButton();
@@ -58,17 +62,17 @@ public class TelaLivros extends BaseWindow {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "TÍTULO", "ÁREA DO DIREITO", "AUTORES", "EDIÇÃO", "ANO DE PUBLICAÇÃO", "EDITORA", "STATUS", "ISBN"
+                "TÍTULO", "ÁREA DO DIREITO", "AUTORES", "EDIÇÃO", "ANO DE PUBLICAÇÃO", "EDITORA", "STATUS", "ISBN", "PREÇO", "DATA AQUISIÇÃO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -77,18 +81,18 @@ public class TelaLivros extends BaseWindow {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1150, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1150, 210));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("DELETAR POR ISBN");
+        jButton1.setText("DELETAR POR ID");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 220, 40));
 
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("DELETAR SELECIONADO");
@@ -97,9 +101,9 @@ public class TelaLivros extends BaseWindow {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 220, 40));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 260, 140));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 260, 180));
 
         bt_cadastrarColaborador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         bt_cadastrarColaborador.setText("CADASTRAR");
@@ -108,40 +112,67 @@ public class TelaLivros extends BaseWindow {
                 bt_cadastrarColaboradorActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_cadastrarColaborador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 180, 140));
+        jPanel1.add(bt_cadastrarColaborador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 180, 140));
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setText("BUSCAR POR ISBN");
+        jButton6.setText("POR AUTOR");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, 30));
 
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setText("BUSCAR TODOS");
+        jButton7.setText("TODOS");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 260, 140));
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton8.setText("POR EDITORA");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 30));
+
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton9.setText("POR ÁREA");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 110, 30));
+
+        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton10.setText("POR TÍTULO");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 30));
+
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 260, 180));
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_alterarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bt_alterarPorId.setText("ALTERAR POR ISBN");
+        bt_alterarPorId.setText("ALTERAR POR ID");
         bt_alterarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_alterarPorIdActionPerformed(evt);
             }
         });
-        jPanel6.add(bt_alterarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel6.add(bt_alterarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 220, 40));
 
         bt_alterarSelecionado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_alterarSelecionado.setText("ALTERAR SELECIONADO");
@@ -150,9 +181,9 @@ public class TelaLivros extends BaseWindow {
                 bt_alterarSelecionadoActionPerformed(evt);
             }
         });
-        jPanel6.add(bt_alterarSelecionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel6.add(bt_alterarSelecionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 220, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 260, 140));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 260, 180));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -169,7 +200,12 @@ public class TelaLivros extends BaseWindow {
         jLabel4.setText("ALTERAR");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 30, 260, 30));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1190, 510));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("EXEMPLARES");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 110, 30));
+
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 1190, 590));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel2.add(lb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
@@ -183,12 +219,12 @@ public class TelaLivros extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LIVROS");
+        jLabel1.setText("EXEMPLARES");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1210, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 100));
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 710));
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -216,18 +252,30 @@ public class TelaLivros extends BaseWindow {
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
-        TelaAlterarLivros.main(null);
+        TelaAlterarExemplares.main(null);
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
         this.setVisible(false);
-        TelaAlterarLivros.main(null);
+        TelaAlterarExemplares.main(null);
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
         this.setVisible(false);
-        TelaCadastrarLivros.main(null);
+        TelaCadastrarExamplares.main(null);
     }//GEN-LAST:event_bt_cadastrarColaboradorActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,21 +294,23 @@ public class TelaLivros extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExemplares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExemplares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExemplares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExemplares.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaLivros().setVisible(true);
+                new TelaExemplares().setVisible(true);
             }
         });
     }
@@ -271,13 +321,17 @@ public class TelaLivros extends BaseWindow {
     private javax.swing.JButton bt_cadastrarColaborador;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

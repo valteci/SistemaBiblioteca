@@ -42,9 +42,9 @@ public class TelaMenuLivro extends BaseWindow {
         lb_areasDireito = new javax.swing.JLabel();
         bt_areasDireito = new javax.swing.JButton();
         lb_exemplares = new javax.swing.JLabel();
-        bt_reservas1 = new javax.swing.JButton();
+        bt_exemplares = new javax.swing.JButton();
         lb_removerLivroOuExemplar = new javax.swing.JLabel();
-        bt_reservas2 = new javax.swing.JButton();
+        bt_removerLivroOuExemplar = new javax.swing.JButton();
         lb_voltar = new javax.swing.JLabel();
         bt_voltar = new javax.swing.JButton();
 
@@ -107,28 +107,28 @@ public class TelaMenuLivro extends BaseWindow {
         jPanelFundo.add(bt_areasDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 400, 230));
         jPanelFundo.add(lb_exemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 170, 110));
 
-        bt_reservas1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        bt_reservas1.setText("EXEMPLARES");
-        bt_reservas1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        bt_reservas1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        bt_reservas1.addActionListener(new java.awt.event.ActionListener() {
+        bt_exemplares.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_exemplares.setText("EXEMPLARES");
+        bt_exemplares.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_exemplares.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_exemplares.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_reservas1ActionPerformed(evt);
+                bt_exemplaresActionPerformed(evt);
             }
         });
-        jPanelFundo.add(bt_reservas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 400, 230));
+        jPanelFundo.add(bt_exemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 400, 230));
         jPanelFundo.add(lb_removerLivroOuExemplar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 170, 110));
 
-        bt_reservas2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        bt_reservas2.setText("REMOVER LIVRO / EXEMPLAR");
-        bt_reservas2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        bt_reservas2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        bt_reservas2.addActionListener(new java.awt.event.ActionListener() {
+        bt_removerLivroOuExemplar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        bt_removerLivroOuExemplar.setText("REMOVER LIVRO / EXEMPLAR");
+        bt_removerLivroOuExemplar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_removerLivroOuExemplar.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_removerLivroOuExemplar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_reservas2ActionPerformed(evt);
+                bt_removerLivroOuExemplarActionPerformed(evt);
             }
         });
-        jPanelFundo.add(bt_reservas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 400, 230));
+        jPanelFundo.add(bt_removerLivroOuExemplar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 400, 230));
         jPanelFundo.add(lb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
 
         bt_voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -149,13 +149,14 @@ public class TelaMenuLivro extends BaseWindow {
         TelaAutores.main(null);
     }//GEN-LAST:event_bt_autoresActionPerformed
 
-    private void bt_reservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reservas1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_reservas1ActionPerformed
+    private void bt_exemplaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_exemplaresActionPerformed
+        this.setVisible(false);
+        TelaExemplares.main(null);
+    }//GEN-LAST:event_bt_exemplaresActionPerformed
 
-    private void bt_reservas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reservas2ActionPerformed
+    private void bt_removerLivroOuExemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removerLivroOuExemplarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bt_reservas2ActionPerformed
+    }//GEN-LAST:event_bt_removerLivroOuExemplarActionPerformed
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
@@ -231,9 +232,9 @@ public class TelaMenuLivro extends BaseWindow {
     private javax.swing.JButton bt_areasDireito;
     private javax.swing.JButton bt_autores;
     private javax.swing.JButton bt_editoras;
+    private javax.swing.JButton bt_exemplares;
     private javax.swing.JButton bt_livros;
-    private javax.swing.JButton bt_reservas1;
-    private javax.swing.JButton bt_reservas2;
+    private javax.swing.JButton bt_removerLivroOuExemplar;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelFundo;
