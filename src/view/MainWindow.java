@@ -91,6 +91,11 @@ public class MainWindow extends BaseWindow {
         bt_reservas.setText("RESERVAS");
         bt_reservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_reservas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_reservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_reservasActionPerformed(evt);
+            }
+        });
         jPanelFundo.add(bt_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 605, 290));
 
         getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
@@ -113,6 +118,11 @@ public class MainWindow extends BaseWindow {
         this.setVisible(false);
         TelaMenuEmprestimo.main(null);
     }//GEN-LAST:event_bt_emprestimosActionPerformed
+
+    private void bt_reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reservasActionPerformed
+        this.setVisible(false);
+        TelaReservas.main(null);
+    }//GEN-LAST:event_bt_reservasActionPerformed
 
     /**
      * @param args the command line arguments
