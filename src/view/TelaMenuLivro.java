@@ -155,7 +155,8 @@ public class TelaMenuLivro extends BaseWindow {
     }//GEN-LAST:event_bt_exemplaresActionPerformed
 
     private void bt_removerLivroOuExemplarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removerLivroOuExemplarActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        TelaMenuRemocao.main(null);
     }//GEN-LAST:event_bt_removerLivroOuExemplarActionPerformed
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed

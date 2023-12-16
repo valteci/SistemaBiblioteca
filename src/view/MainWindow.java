@@ -9,9 +9,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class MainWindow extends BaseWindow {
-
-    
-    private final String pastaImagem = "./src/view/img/";
+        
     
     public MainWindow() {
         super(null);

@@ -11,12 +11,12 @@ import view.utils.BaseWindow;
  *
  * @author junio
  */
-public class TelaCadastrarEditoras extends BaseWindow {
+public class TelaExcluirExamplar extends BaseWindow {
 
     /**
      * Creates new form TelaCadastrarColaboradores
      */
-    public TelaCadastrarEditoras() {
+    public TelaExcluirExamplar() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -62,7 +62,7 @@ public class TelaCadastrarEditoras extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTRAR EDITORAS");
+        jLabel1.setText("EXCLUIR EXEMPLAR");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 640, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 100));
@@ -70,7 +70,7 @@ public class TelaCadastrarEditoras extends BaseWindow {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_cadastrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        bt_cadastrar.setText("CADASTRAR");
+        bt_cadastrar.setText("EXCLUIR");
         bt_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_cadastrarActionPerformed(evt);
@@ -79,8 +79,8 @@ public class TelaCadastrarEditoras extends BaseWindow {
         jPanel1.add(bt_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 500, 60));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setText("Nome:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 60, -1));
+        jLabel3.setText("ID:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 30, -1));
 
         txt_nome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 420, 30));
@@ -89,8 +89,8 @@ public class TelaCadastrarEditoras extends BaseWindow {
         jPanel1.add(txt_nome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 420, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setText("Local:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 60, -1));
+        jLabel4.setText("Motivo:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 60, -1));
 
         jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 520, 280));
 
@@ -101,7 +101,7 @@ public class TelaCadastrarEditoras extends BaseWindow {
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaEditoras.main(null);
+        TelaExemplaresExcluidos.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
@@ -125,14 +125,22 @@ public class TelaCadastrarEditoras extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExcluirExamplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExcluirExamplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExcluirExamplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaExcluirExamplar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -145,7 +153,7 @@ public class TelaCadastrarEditoras extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastrarEditoras().setVisible(true);
+                new TelaExcluirExamplar().setVisible(true);
             }
         });
     }
