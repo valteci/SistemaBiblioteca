@@ -256,11 +256,11 @@
                   <Font name="Segoe UI" size="16" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="AUTORES"/>
+                <Property name="text" type="java.lang.String" value="&#xc1;REAS DO DIREITO"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="550" y="240" width="80" height="30"/>
+                  <AbsoluteConstraints x="510" y="240" width="170" height="30"/>
                 </Constraint>
               </Constraints>
             </Component>

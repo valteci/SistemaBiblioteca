@@ -79,6 +79,11 @@ public class MainWindow extends BaseWindow {
         bt_emprestimos.setText("EMPRÉSTIMOS");
         bt_emprestimos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_emprestimos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_emprestimos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_emprestimosActionPerformed(evt);
+            }
+        });
         jPanelFundo.add(bt_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 605, 290));
         jPanelFundo.add(lb_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 170, 110));
 
@@ -103,6 +108,11 @@ public class MainWindow extends BaseWindow {
         this.setVisible(false);
         TelaMenuLivro.main(null);
     }//GEN-LAST:event_bt_livrosActionPerformed
+
+    private void bt_emprestimosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_emprestimosActionPerformed
+        this.setVisible(false);
+        TelaMenuEmprestimo.main(null);
+    }//GEN-LAST:event_bt_emprestimosActionPerformed
 
     /**
      * @param args the command line arguments
