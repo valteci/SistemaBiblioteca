@@ -191,13 +191,27 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         return valorDigitado;
     }
     
+    protected int getIntFromUser(String mensagem) throws Exception {
+        String valorDigitado = JOptionPane.showInputDialog(mensagem);
+        
+        if (valorDigitado == null)
+            return -1;
+        
+        int valorDigitadoInt = Integer.parseInt(valorDigitado);
+        
+        return valorDigitadoInt;
+    }
+    
     protected boolean validarEmail(String email) {
         String regex    = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-]" +
                           "[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         
-        Pattern pattern = Pattern.compile(regex);       
+        Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
+        
         
         return matcher.matches();
     }
+    
+    
 }
