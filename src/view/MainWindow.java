@@ -57,6 +57,11 @@ public class MainWindow extends BaseWindow {
         bt_livros.setText("LIVROS");
         bt_livros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_livros.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_livros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_livrosActionPerformed(evt);
+            }
+        });
         jPanelFundo.add(bt_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 605, 290));
         jPanelFundo.add(lb_colaboradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 170, 110));
 
@@ -95,6 +100,11 @@ public class MainWindow extends BaseWindow {
         this.setVisible(false);
         TelaColaboradores.main(null);
     }//GEN-LAST:event_bt_colaboradoresActionPerformed
+
+    private void bt_livrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_livrosActionPerformed
+        this.setVisible(false);
+        TelaMenuLivro.main(null);
+    }//GEN-LAST:event_bt_livrosActionPerformed
 
     /**
      * @param args the command line arguments

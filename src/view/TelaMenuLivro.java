@@ -8,12 +8,12 @@ import view.utils.*;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
-public class MainWindow extends BaseWindow {
+public class TelaMenuLivro extends BaseWindow {
 
     
     private final String pastaImagem = "./src/view/img/";
     
-    public MainWindow() {
+    public TelaMenuLivro() {
         super(null);
         initComponents();        
 
@@ -35,12 +35,18 @@ public class MainWindow extends BaseWindow {
         jLabel1 = new javax.swing.JLabel();
         lb_livros = new javax.swing.JLabel();
         bt_livros = new javax.swing.JButton();
-        lb_colaboradores = new javax.swing.JLabel();
-        bt_colaboradores = new javax.swing.JButton();
-        lb_emprestimos = new javax.swing.JLabel();
+        lb_autores = new javax.swing.JLabel();
+        bt_autores = new javax.swing.JButton();
+        lb_editoras = new javax.swing.JLabel();
         bt_emprestimos = new javax.swing.JButton();
-        lb_reservas = new javax.swing.JLabel();
+        lb_areasDireito = new javax.swing.JLabel();
         bt_reservas = new javax.swing.JButton();
+        lb_exemplares = new javax.swing.JLabel();
+        bt_reservas1 = new javax.swing.JButton();
+        lb_removerLivroOuExemplar = new javax.swing.JLabel();
+        bt_reservas2 = new javax.swing.JButton();
+        lb_voltar = new javax.swing.JLabel();
+        bt_voltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -49,52 +55,97 @@ public class MainWindow extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MENU");
+        jLabel1.setText("MENU - LIVROS");
         jPanelFundo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1270, 40));
-        jPanelFundo.add(lb_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 170, 110));
+        jPanelFundo.add(lb_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 170, 110));
 
         bt_livros.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         bt_livros.setText("LIVROS");
         bt_livros.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_livros.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(bt_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 605, 290));
-        jPanelFundo.add(lb_colaboradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 170, 110));
+        jPanelFundo.add(bt_livros, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 400, 230));
+        jPanelFundo.add(lb_autores, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 170, 110));
 
-        bt_colaboradores.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        bt_colaboradores.setText("COLABORADORES");
-        bt_colaboradores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        bt_colaboradores.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        bt_colaboradores.addActionListener(new java.awt.event.ActionListener() {
+        bt_autores.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_autores.setText("AUTORES");
+        bt_autores.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_autores.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_autores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_colaboradoresActionPerformed(evt);
+                bt_autoresActionPerformed(evt);
             }
         });
-        jPanelFundo.add(bt_colaboradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, 605, 290));
-        jPanelFundo.add(lb_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 170, 110));
+        jPanelFundo.add(bt_autores, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 400, 230));
+        jPanelFundo.add(lb_editoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 170, 110));
 
         bt_emprestimos.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        bt_emprestimos.setText("EMPRÉSTIMOS");
+        bt_emprestimos.setText("EDITORAS");
         bt_emprestimos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_emprestimos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(bt_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 605, 290));
-        jPanelFundo.add(lb_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 460, 170, 110));
+        jPanelFundo.add(bt_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 130, 400, 230));
+        jPanelFundo.add(lb_areasDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 170, 110));
 
-        bt_reservas.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        bt_reservas.setText("RESERVAS");
+        bt_reservas.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
+        bt_reservas.setText("ÁREAS DO DIREITO");
         bt_reservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         bt_reservas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(bt_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 360, 605, 290));
+        jPanelFundo.add(bt_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 400, 230));
+        jPanelFundo.add(lb_exemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 170, 110));
+
+        bt_reservas1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_reservas1.setText("EXEMPLARES");
+        bt_reservas1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_reservas1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_reservas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_reservas1ActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_reservas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 400, 230));
+        jPanelFundo.add(lb_removerLivroOuExemplar, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 450, 170, 110));
+
+        bt_reservas2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        bt_reservas2.setText("REMOVER LIVRO / EXEMPLAR");
+        bt_reservas2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_reservas2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_reservas2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_reservas2ActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_reservas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 370, 400, 230));
+        jPanelFundo.add(lb_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 60, 60));
+
+        bt_voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_voltarActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_voltar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 80));
 
         getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1270, 670));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bt_colaboradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_colaboradoresActionPerformed
+    private void bt_autoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_autoresActionPerformed
         
         this.setVisible(false);
-        TelaColaboradores.main(null);
-    }//GEN-LAST:event_bt_colaboradoresActionPerformed
+        TelaAutores.main(null);
+    }//GEN-LAST:event_bt_autoresActionPerformed
+
+    private void bt_reservas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reservas1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_reservas1ActionPerformed
+
+    private void bt_reservas2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reservas2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_reservas2ActionPerformed
+
+    private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
+        this.setVisible(false);
+        MainWindow.main(null);
+    }//GEN-LAST:event_bt_voltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,14 +164,26 @@ public class MainWindow extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaMenuLivro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -129,22 +192,28 @@ public class MainWindow extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainWindow().setVisible(true);
+                new TelaMenuLivro().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_colaboradores;
+    private javax.swing.JButton bt_autores;
     private javax.swing.JButton bt_emprestimos;
     private javax.swing.JButton bt_livros;
     private javax.swing.JButton bt_reservas;
+    private javax.swing.JButton bt_reservas1;
+    private javax.swing.JButton bt_reservas2;
+    private javax.swing.JButton bt_voltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanelFundo;
-    private javax.swing.JLabel lb_colaboradores;
-    private javax.swing.JLabel lb_emprestimos;
+    private javax.swing.JLabel lb_areasDireito;
+    private javax.swing.JLabel lb_autores;
+    private javax.swing.JLabel lb_editoras;
+    private javax.swing.JLabel lb_exemplares;
     private javax.swing.JLabel lb_livros;
-    private javax.swing.JLabel lb_reservas;
+    private javax.swing.JLabel lb_removerLivroOuExemplar;
+    private javax.swing.JLabel lb_voltar;
     // End of variables declaration//GEN-END:variables
 
 
@@ -153,9 +222,13 @@ public class MainWindow extends BaseWindow {
         try {
             
             carregarImagem(lb_livros, "livros.png");
-            carregarImagem(lb_colaboradores, "colaboradores.png");
-            carregarImagem(lb_emprestimos, "emprestimos.png");
-            carregarImagem(lb_reservas, "reservas.png");                                    
+            carregarImagem(lb_autores, "autor_512.png");
+            carregarImagem(lb_editoras, "editora_512.png");
+            carregarImagem(lb_areasDireito, "areasDireito_512.png");
+            carregarImagem(lb_exemplares, "exemplares.png");
+            carregarImagem(lb_removerLivroOuExemplar, "remover.png");
+            carregarImagem(lb_voltar, "voltar.png");
+            
                         
         } catch (Exception e) {
             exibirMesagemDeErro(e.getMessage());
