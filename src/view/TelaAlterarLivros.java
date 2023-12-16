@@ -12,12 +12,12 @@ import view.utils.BaseWindow;
  *
  * @author junio
  */
-public class TelaAlterarColaborador extends BaseWindow {
+public class TelaAlterarLivros extends BaseWindow {
 
     /**
      * Creates new form TelaAlterarColaborador
      */
-    public TelaAlterarColaborador() {
+    public TelaAlterarLivros() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -60,10 +60,20 @@ public class TelaAlterarColaborador extends BaseWindow {
         cb_cargo = new javax.swing.JComboBox<>();
         lb_cargo = new javax.swing.JLabel();
         ckb_alterarEmail = new javax.swing.JCheckBox();
-        txt_numeroOAB = new javax.swing.JTextField();
-        lb_numeroOAB = new javax.swing.JLabel();
-        ckb_alterarNumeroOAB = new javax.swing.JCheckBox();
+        jLabel8 = new javax.swing.JLabel();
+        txt_ISBN = new javax.swing.JTextField();
+        ckb_alterarNome1 = new javax.swing.JCheckBox();
+        cb_editora = new javax.swing.JComboBox<>();
+        lb_cargo1 = new javax.swing.JLabel();
+        ckb_alterarCargo1 = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        table_autores = new javax.swing.JTable();
+        bt_adicionarAutor = new javax.swing.JButton();
+        bt_removerAutor = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        ckb_alterarTelefone1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,20 +92,20 @@ public class TelaAlterarColaborador extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ALTERAR COLABORADOR");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 720, 80));
+        jLabel1.setText("ALTERAR LIVRO");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1080, 80));
 
-        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
+        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 100));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("ALTERAR");
-        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 700, 150, 50));
+        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 690, 150, 50));
 
         txt_matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Matrícula:");
+        jLabel2.setText("ISBN:");
         jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 70, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,31 +117,31 @@ public class TelaAlterarColaborador extends BaseWindow {
                 ckb_alterarStatusItemStateChanged(evt);
             }
         });
-        jPanel1.add(ckb_alterarStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, 80, -1));
+        jPanel1.add(ckb_alterarStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 320, 80, -1));
 
         txt_telefone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_telefone.setEnabled(false);
-        jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 230, -1));
+        jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Novo Telefone:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 120, -1));
+        jLabel3.setText("Nova Edição:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 100, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Novo Nome:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, -1));
+        jLabel4.setText("Novo Título:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 100, -1));
 
         txt_nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_nome.setEnabled(false);
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 230, -1));
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 230, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Novo Email:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 100, -1));
+        jLabel6.setText("Novo Ano de Publicação:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 180, -1));
 
         txt_email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_email.setEnabled(false);
-        jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 230, -1));
+        jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 230, -1));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -153,13 +163,13 @@ public class TelaAlterarColaborador extends BaseWindow {
                 rb_inativoActionPerformed(evt);
             }
         });
-        jPanel3.add(rb_inativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanel3.add(rb_inativo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 240, 50));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 340, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Novo Status:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 100, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 100, -1));
 
         ckb_alterarNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarNome.setText("Alterar");
@@ -173,7 +183,7 @@ public class TelaAlterarColaborador extends BaseWindow {
                 ckb_alterarNomeStateChanged(evt);
             }
         });
-        jPanel1.add(ckb_alterarNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        jPanel1.add(ckb_alterarNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
         ckb_alterarTelefone.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarTelefone.setText("Alterar");
@@ -182,7 +192,7 @@ public class TelaAlterarColaborador extends BaseWindow {
                 ckb_alterarTelefoneItemStateChanged(evt);
             }
         });
-        jPanel1.add(ckb_alterarTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
+        jPanel1.add(ckb_alterarTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 110, -1, -1));
 
         ckb_alterarCargo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarCargo.setText("Alterar");
@@ -196,21 +206,20 @@ public class TelaAlterarColaborador extends BaseWindow {
                 ckb_alterarCargoActionPerformed(evt);
             }
         });
-        jPanel1.add(ckb_alterarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 250, -1, -1));
+        jPanel1.add(ckb_alterarCargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 150, -1, -1));
 
         cb_cargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cb_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADVOGADO", "ESTAGIÁRIO", "FUNCIONÁRIO" }));
         cb_cargo.setEnabled(false);
         cb_cargo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cb_cargoItemStateChanged(evt);
             }
         });
-        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 230, 30));
+        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 230, 30));
 
         lb_cargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lb_cargo.setText("Novo Cargo:");
-        jPanel1.add(lb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 100, -1));
+        lb_cargo.setText("Nova Área Do DIreito:");
+        jPanel1.add(lb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 160, -1));
 
         ckb_alterarEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarEmail.setText("Alterar");
@@ -219,39 +228,122 @@ public class TelaAlterarColaborador extends BaseWindow {
                 ckb_alterarEmailItemStateChanged(evt);
             }
         });
-        jPanel1.add(ckb_alterarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, -1, -1));
+        jPanel1.add(ckb_alterarEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
 
-        txt_numeroOAB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_numeroOAB.setEnabled(false);
-        jPanel1.add(txt_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 230, -1));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Novo ISBN:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, 90, -1));
 
-        lb_numeroOAB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lb_numeroOAB.setText("Novo Número Da OAB:");
-        jPanel1.add(lb_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, -1));
+        txt_ISBN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_ISBN.setEnabled(false);
+        jPanel1.add(txt_ISBN, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 230, -1));
 
-        ckb_alterarNumeroOAB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        ckb_alterarNumeroOAB.setText("Alterar");
-        ckb_alterarNumeroOAB.addItemListener(new java.awt.event.ItemListener() {
+        ckb_alterarNome1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ckb_alterarNome1.setText("Alterar");
+        ckb_alterarNome1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ckb_alterarNumeroOABItemStateChanged(evt);
+                ckb_alterarNome1ItemStateChanged(evt);
             }
         });
-        jPanel1.add(ckb_alterarNumeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, -1, -1));
+        ckb_alterarNome1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ckb_alterarNome1StateChanged(evt);
+            }
+        });
+        jPanel1.add(ckb_alterarNome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, 470, 500));
+        cb_editora.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cb_editora.setEnabled(false);
+        cb_editora.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cb_editoraItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cb_editora, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 230, 30));
+
+        lb_cargo1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lb_cargo1.setText("Nova Editora:");
+        jPanel1.add(lb_cargo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 250, 100, -1));
+
+        ckb_alterarCargo1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ckb_alterarCargo1.setText("Alterar");
+        ckb_alterarCargo1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckb_alterarCargo1ItemStateChanged(evt);
+            }
+        });
+        ckb_alterarCargo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ckb_alterarCargo1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ckb_alterarCargo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 550, 500));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("ALTERE OS DADOS");
-        jPanelFundo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+        jLabel5.setText("AUTORES");
+        jPanelFundo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 170, 70, -1));
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 770));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        table_autores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "NOME"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_autores.setEnabled(false);
+        jScrollPane1.setViewportView(table_autores);
+
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 350, 180));
+
+        bt_adicionarAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_adicionarAutor.setText("ADICIONAR AUTOR");
+        bt_adicionarAutor.setEnabled(false);
+        jPanel4.add(bt_adicionarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 170, 30));
+
+        bt_removerAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_removerAutor.setText("REMOVER AUTOR");
+        bt_removerAutor.setEnabled(false);
+        jPanel4.add(bt_removerAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 160, 30));
+
+        jPanelFundo.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 190, 400, 300));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("ALTERE OS DADOS");
+        jPanelFundo.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, -1, -1));
+
+        ckb_alterarTelefone1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ckb_alterarTelefone1.setText("Alterar");
+        ckb_alterarTelefone1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckb_alterarTelefone1ItemStateChanged(evt);
+            }
+        });
+        jPanelFundo.add(ckb_alterarTelefone1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 170, 90, -1));
+
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaColaboradores.main(null);
+        TelaLivros.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void rb_inativoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_inativoActionPerformed
@@ -263,19 +355,7 @@ public class TelaAlterarColaborador extends BaseWindow {
     }//GEN-LAST:event_rb_ativoActionPerformed
 
     private void cb_cargoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_cargoItemStateChanged
-        JComboBox texto = (JComboBox) evt.getSource();
-        if (! texto.getSelectedItem().toString().equalsIgnoreCase(
-            "advogado")
-        ) {
-            txt_numeroOAB.setVisible(false);
-            lb_numeroOAB.setVisible(false);
-            ckb_alterarNumeroOAB.setVisible(false);
-        }
-        else {
-            txt_numeroOAB.setVisible(true);
-            lb_numeroOAB.setVisible(true);
-            ckb_alterarNumeroOAB.setVisible(true);
-        }
+        
     }//GEN-LAST:event_cb_cargoItemStateChanged
 
     private void ckb_alterarCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckb_alterarCargoActionPerformed
@@ -329,16 +409,6 @@ public class TelaAlterarColaborador extends BaseWindow {
         }
     }//GEN-LAST:event_ckb_alterarCargoItemStateChanged
 
-    private void ckb_alterarNumeroOABItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarNumeroOABItemStateChanged
-        JCheckBox ckb = (JCheckBox) evt.getSource();
-        if (ckb.isSelected()) {
-            txt_numeroOAB.setEnabled(true);
-        }
-        else {
-            txt_numeroOAB.setEnabled(false);
-        }
-    }//GEN-LAST:event_ckb_alterarNumeroOABItemStateChanged
-
     private void ckb_alterarStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarStatusItemStateChanged
         JCheckBox ckb = (JCheckBox) evt.getSource();
         if (ckb.isSelected()) {
@@ -350,6 +420,54 @@ public class TelaAlterarColaborador extends BaseWindow {
             rb_inativo.setEnabled(false);
         }
     }//GEN-LAST:event_ckb_alterarStatusItemStateChanged
+
+    private void ckb_alterarNome1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarNome1ItemStateChanged
+        JCheckBox ckb = (JCheckBox) evt.getSource();
+        if (ckb.isSelected()) {
+            txt_ISBN.setEnabled(true);            
+        }
+        else {
+            txt_ISBN.setEnabled(false);
+        }
+    }//GEN-LAST:event_ckb_alterarNome1ItemStateChanged
+
+    private void ckb_alterarNome1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckb_alterarNome1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckb_alterarNome1StateChanged
+
+    private void cb_editoraItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_editoraItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_editoraItemStateChanged
+
+    private void ckb_alterarCargo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarCargo1ItemStateChanged
+        
+        JCheckBox ckb = (JCheckBox) evt.getSource();
+        if (ckb.isSelected()) {
+            cb_editora.setEnabled(true);
+        }
+        else {
+            cb_editora.setEnabled(false);
+        }
+    }//GEN-LAST:event_ckb_alterarCargo1ItemStateChanged
+
+    private void ckb_alterarCargo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckb_alterarCargo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ckb_alterarCargo1ActionPerformed
+
+    private void ckb_alterarTelefone1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarTelefone1ItemStateChanged
+        
+        JCheckBox ckb = (JCheckBox) evt.getSource();
+        if (ckb.isSelected()) {
+            table_autores.setEnabled(true);
+            bt_adicionarAutor.setEnabled(true);
+            bt_removerAutor.setEnabled(true);
+        }
+        else {
+            table_autores.setEnabled(false);
+            bt_adicionarAutor.setEnabled(false);
+            bt_removerAutor.setEnabled(false);
+        }
+    }//GEN-LAST:event_ckb_alterarTelefone1ItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -368,33 +486,39 @@ public class TelaAlterarColaborador extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarColaborador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarColaborador().setVisible(true);
+                new TelaAlterarLivros().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_adicionarAutor;
+    private javax.swing.JButton bt_removerAutor;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JComboBox<String> cb_cargo;
+    private javax.swing.JComboBox<String> cb_editora;
     private javax.swing.JCheckBox ckb_alterarCargo;
+    private javax.swing.JCheckBox ckb_alterarCargo1;
     private javax.swing.JCheckBox ckb_alterarEmail;
     private javax.swing.JCheckBox ckb_alterarNome;
-    private javax.swing.JCheckBox ckb_alterarNumeroOAB;
+    private javax.swing.JCheckBox ckb_alterarNome1;
     private javax.swing.JCheckBox ckb_alterarStatus;
     private javax.swing.JCheckBox ckb_alterarTelefone;
+    private javax.swing.JCheckBox ckb_alterarTelefone1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -403,19 +527,24 @@ public class TelaAlterarColaborador extends BaseWindow {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelFundo;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_cargo;
-    private javax.swing.JLabel lb_numeroOAB;
+    private javax.swing.JLabel lb_cargo1;
     private javax.swing.JLabel lb_voltar;
     private javax.swing.JRadioButton rb_ativo;
     private javax.swing.JRadioButton rb_inativo;
+    private javax.swing.JTable table_autores;
+    private javax.swing.JTextField txt_ISBN;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_matricula;
     private javax.swing.JTextField txt_nome;
-    private javax.swing.JTextField txt_numeroOAB;
     private javax.swing.JTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
 }

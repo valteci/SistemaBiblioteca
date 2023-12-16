@@ -5,12 +5,12 @@
 package view;
 import view.utils.*;
 
-public class TelaColaboradores extends BaseWindow {
+public class TelaLivros extends BaseWindow {
 
     /**
      * Creates new form TelaColaboradores
      */
-    public TelaColaboradores() {
+    public TelaLivros() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -58,17 +58,17 @@ public class TelaColaboradores extends BaseWindow {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "MATRÍCULA", "NOME", "NÚMERO DA OAB", "EMAIL", "TELEFONE", "STATUS", "CARGO"
+                "TÍTULO", "ÁREA DO DIREITO", "AUTORES", "EDIÇÃO", "ANO DE PUBLICAÇÃO", "EDITORA", "STATUS", "ISBN"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -82,7 +82,7 @@ public class TelaColaboradores extends BaseWindow {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("DELETAR POR MATRÍCULA");
+        jButton1.setText("DELETAR POR ISBN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -113,7 +113,7 @@ public class TelaColaboradores extends BaseWindow {
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setText("BUSCAR POR MATRÍCULA");
+        jButton6.setText("BUSCAR POR ISBN");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -135,7 +135,7 @@ public class TelaColaboradores extends BaseWindow {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         bt_alterarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        bt_alterarPorId.setText("ALTERAR POR MATRÍCULA");
+        bt_alterarPorId.setText("ALTERAR POR ISBN");
         bt_alterarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_alterarPorIdActionPerformed(evt);
@@ -183,7 +183,7 @@ public class TelaColaboradores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("COLABORADORES");
+        jLabel1.setText("LIVROS");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1210, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 100));
@@ -195,7 +195,7 @@ public class TelaColaboradores extends BaseWindow {
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        MainWindow.main(null);
+        TelaMenuLivro.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -216,17 +216,17 @@ public class TelaColaboradores extends BaseWindow {
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
-        TelaAlterarColaborador.main(null);
+        TelaAlterarLivros.main(null);
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
         this.setVisible(false);
-        TelaAlterarColaborador.main(null);
+        TelaAlterarLivros.main(null);
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
         this.setVisible(false);
-        TelaCadastrarColaboradores.main(null);
+        TelaCadastrarLivros.main(null);
     }//GEN-LAST:event_bt_cadastrarColaboradorActionPerformed
 
     /**
@@ -246,20 +246,21 @@ public class TelaColaboradores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaColaboradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaColaboradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaColaboradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaColaboradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaLivros.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaColaboradores().setVisible(true);
+                new TelaLivros().setVisible(true);
             }
         });
     }

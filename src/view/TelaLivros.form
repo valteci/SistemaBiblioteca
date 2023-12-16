@@ -62,14 +62,15 @@
                 <Component class="javax.swing.JTable" name="jTable1">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="7" rowCount="4">
-                        <Column editable="false" title="MATR&#xcd;CULA" type="java.lang.Object"/>
-                        <Column editable="false" title="NOME" type="java.lang.Object"/>
-                        <Column editable="false" title="N&#xda;MERO DA OAB" type="java.lang.Object"/>
-                        <Column editable="false" title="EMAIL" type="java.lang.Object"/>
-                        <Column editable="false" title="TELEFONE" type="java.lang.Object"/>
+                      <Table columnCount="8" rowCount="4">
+                        <Column editable="false" title="T&#xcd;TULO" type="java.lang.Object"/>
+                        <Column editable="false" title="&#xc1;REA DO DIREITO" type="java.lang.Object"/>
+                        <Column editable="false" title="AUTORES" type="java.lang.Object"/>
+                        <Column editable="false" title="EDI&#xc7;&#xc3;O" type="java.lang.Object"/>
+                        <Column editable="false" title="ANO DE PUBLICA&#xc7;&#xc3;O" type="java.lang.Object"/>
+                        <Column editable="false" title="EDITORA" type="java.lang.Object"/>
                         <Column editable="false" title="STATUS" type="java.lang.Object"/>
-                        <Column editable="false" title="CARGO" type="java.lang.Object"/>
+                        <Column editable="false" title="ISBN" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
@@ -92,7 +93,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="DELETAR POR MATR&#xcd;CULA"/>
+                    <Property name="text" type="java.lang.String" value="DELETAR POR ISBN"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
@@ -153,7 +154,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="BUSCAR POR MATR&#xcd;CULA"/>
+                    <Property name="text" type="java.lang.String" value="BUSCAR POR ISBN"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
@@ -198,7 +199,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="ALTERAR POR MATR&#xcd;CULA"/>
+                    <Property name="text" type="java.lang.String" value="ALTERAR POR ISBN"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_alterarPorIdActionPerformed"/>
@@ -305,7 +306,7 @@
                   <Font name="Segoe UI" size="36" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="COLABORADORES"/>
+                <Property name="text" type="java.lang.String" value="LIVROS"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
