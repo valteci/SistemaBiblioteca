@@ -12,12 +12,12 @@ import view.utils.BaseWindow;
  *
  * @author junio
  */
-public class TelaAlterarAutores extends BaseWindow {
+public class TelaAlterarAreasDireito extends BaseWindow {
 
     /**
      * Creates new form TelaAlterarColaborador
      */
-    public TelaAlterarAutores() {
+    public TelaAlterarAreasDireito() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -65,27 +65,27 @@ public class TelaAlterarAutores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ALTERAR AUTOR");
+        jLabel1.setText("ALTERAR ÁREA DO DIREITO");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 720, 80));
 
-        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
+        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 100));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("ALTERAR");
-        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 150, 50));
+        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 150, 50));
 
         txt_matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Id:");
-        jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 70, -1));
+        jLabel2.setText("Id da Area:");
+        jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Nome");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, -1));
+        jLabel4.setText("Novo Nome Da Área:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 160, -1));
 
         txt_nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_nome.setEnabled(false);
@@ -105,20 +105,20 @@ public class TelaAlterarAutores extends BaseWindow {
         });
         jPanel1.add(ckb_alterarNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 470, 110));
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 470, 100));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("ALTERE OS DADOS");
         jPanelFundo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 430));
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaAutores.main(null);
+        TelaAreasDireito.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void ckb_alterarNomeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckb_alterarNomeStateChanged
@@ -153,14 +153,26 @@ public class TelaAlterarAutores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +181,7 @@ public class TelaAlterarAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarAutores().setVisible(true);
+                new TelaAlterarAreasDireito().setVisible(true);
             }
         });
     }

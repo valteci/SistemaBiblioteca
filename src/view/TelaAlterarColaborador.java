@@ -95,7 +95,7 @@ public class TelaAlterarColaborador extends BaseWindow {
         jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Matrícula");
+        jLabel2.setText("Matrícula:");
         jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 70, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,20 +114,20 @@ public class TelaAlterarColaborador extends BaseWindow {
         jPanel1.add(txt_telefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 230, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Telefone");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 70, -1));
+        jLabel3.setText("Novo Telefone:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 120, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Nome");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, -1));
+        jLabel4.setText("Novo Nome:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, -1));
 
         txt_nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_nome.setEnabled(false);
         jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 230, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Email");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 70, -1));
+        jLabel6.setText("Novo Email:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 100, -1));
 
         txt_email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_email.setEnabled(false);
@@ -158,8 +158,8 @@ public class TelaAlterarColaborador extends BaseWindow {
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 240, 50));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Status");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 70, -1));
+        jLabel7.setText("Novo Status:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 100, -1));
 
         ckb_alterarNome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarNome.setText("Alterar");
@@ -209,8 +209,8 @@ public class TelaAlterarColaborador extends BaseWindow {
         jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 230, 30));
 
         lb_cargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        lb_cargo.setText("Cargo:");
-        jPanel1.add(lb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 60, -1));
+        lb_cargo.setText("Novo Cargo:");
+        jPanel1.add(lb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 100, -1));
 
         ckb_alterarEmail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarEmail.setText("Alterar");
@@ -226,8 +226,8 @@ public class TelaAlterarColaborador extends BaseWindow {
         jPanel1.add(txt_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 230, -1));
 
         lb_numeroOAB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lb_numeroOAB.setText("Número Da OAB:");
-        jPanel1.add(lb_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 130, -1));
+        lb_numeroOAB.setText("Novo Número Da OAB:");
+        jPanel1.add(lb_numeroOAB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, -1));
 
         ckb_alterarNumeroOAB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ckb_alterarNumeroOAB.setText("Alterar");

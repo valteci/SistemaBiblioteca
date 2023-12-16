@@ -64,7 +64,7 @@ public class TelaColaboradores extends BaseWindow {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Matrícula", "Nome", "Número OAB", "Email", "Telefone", "Status", "Cargo"
+                "MATRÍCULA", "NOME", "NÚMERO DA OAB", "EMAIL", "TELEFONE", "STATUS", "CARGO"
             }
         ) {
             boolean[] canEdit = new boolean [] {

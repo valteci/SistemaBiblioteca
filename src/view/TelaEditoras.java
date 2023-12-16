@@ -5,12 +5,12 @@
 package view;
 import view.utils.*;
 
-public class TelaAutores extends BaseWindow {
+public class TelaEditoras extends BaseWindow {
 
     /**
      * Creates new form TelaColaboradores
      */
-    public TelaAutores() {
+    public TelaEditoras() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -59,17 +59,17 @@ public class TelaAutores extends BaseWindow {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "NOME"
+                "ID", "NOME", "LOCAL"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -167,7 +167,7 @@ public class TelaAutores extends BaseWindow {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("AUTORES");
+        jLabel4.setText("EDITORAS");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -189,7 +189,7 @@ public class TelaAutores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("AUTORES");
+        jLabel1.setText("EDITORAS");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1210, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 100));
@@ -222,17 +222,17 @@ public class TelaAutores extends BaseWindow {
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
-        TelaAlterarAutores.main(null);
+        TelaAlterarEditoras.main(null);
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
         this.setVisible(false);
-        TelaAlterarAutores.main(null);
+        TelaAlterarEditoras.main(null);
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
         this.setVisible(false);
-        TelaCadastrarAutores.main(null);
+        TelaCadastrarEditoras.main(null);
     }//GEN-LAST:event_bt_cadastrarColaboradorActionPerformed
 
     /**
@@ -252,14 +252,18 @@ public class TelaAutores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -268,7 +272,7 @@ public class TelaAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAutores().setVisible(true);
+                new TelaEditoras().setVisible(true);
             }
         });
     }

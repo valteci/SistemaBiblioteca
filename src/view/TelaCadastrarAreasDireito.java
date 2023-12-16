@@ -11,12 +11,12 @@ import view.utils.BaseWindow;
  *
  * @author junio
  */
-public class TelaCadastrarAutores extends BaseWindow {
+public class TelaCadastrarAreasDireito extends BaseWindow {
 
     /**
      * Creates new form TelaCadastrarColaboradores
      */
-    public TelaCadastrarAutores() {
+    public TelaCadastrarAreasDireito() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -60,10 +60,10 @@ public class TelaCadastrarAutores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTRAR AUTORES");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 640, 80));
+        jLabel1.setText("CADASTRAR ÁREA DO DIREITO");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 740, 80));
 
-        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 100));
+        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 100));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -81,18 +81,18 @@ public class TelaCadastrarAutores extends BaseWindow {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 60, -1));
 
         txt_nome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 320, 30));
+        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 420, 30));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 520, 190));
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 520, 190));
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 350));
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaAutores.main(null);
+        TelaAreasDireito.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
@@ -116,14 +116,26 @@ public class TelaCadastrarAutores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastrarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaCadastrarAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -132,7 +144,7 @@ public class TelaCadastrarAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaCadastrarAutores().setVisible(true);
+                new TelaCadastrarAreasDireito().setVisible(true);
             }
         });
     }

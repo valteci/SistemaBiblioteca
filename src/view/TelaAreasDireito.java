@@ -5,12 +5,12 @@
 package view;
 import view.utils.*;
 
-public class TelaAutores extends BaseWindow {
+public class TelaAreasDireito extends BaseWindow {
 
     /**
      * Creates new form TelaColaboradores
      */
-    public TelaAutores() {
+    public TelaAreasDireito() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -65,7 +65,7 @@ public class TelaAutores extends BaseWindow {
                 {null, null}
             },
             new String [] {
-                "ID", "NOME"
+                "ID", "NOME DA ÁREA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -189,7 +189,7 @@ public class TelaAutores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("AUTORES");
+        jLabel1.setText("ÁREAS DO DIREITO");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1210, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1210, 100));
@@ -222,17 +222,17 @@ public class TelaAutores extends BaseWindow {
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
-        TelaAlterarAutores.main(null);
+        TelaAlterarAreasDireito.main(null);
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
         this.setVisible(false);
-        TelaAlterarAutores.main(null);
+        TelaAlterarAreasDireito.main(null);
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
         this.setVisible(false);
-        TelaCadastrarAutores.main(null);
+        TelaCadastrarAreasDireito.main(null);
     }//GEN-LAST:event_bt_cadastrarColaboradorActionPerformed
 
     /**
@@ -252,14 +252,18 @@ public class TelaAutores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAreasDireito.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -268,7 +272,7 @@ public class TelaAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAutores().setVisible(true);
+                new TelaAreasDireito().setVisible(true);
             }
         });
     }

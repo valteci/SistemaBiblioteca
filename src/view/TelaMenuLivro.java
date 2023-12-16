@@ -38,9 +38,9 @@ public class TelaMenuLivro extends BaseWindow {
         lb_autores = new javax.swing.JLabel();
         bt_autores = new javax.swing.JButton();
         lb_editoras = new javax.swing.JLabel();
-        bt_emprestimos = new javax.swing.JButton();
+        bt_editoras = new javax.swing.JButton();
         lb_areasDireito = new javax.swing.JLabel();
-        bt_reservas = new javax.swing.JButton();
+        bt_areasDireito = new javax.swing.JButton();
         lb_exemplares = new javax.swing.JLabel();
         bt_reservas1 = new javax.swing.JButton();
         lb_removerLivroOuExemplar = new javax.swing.JLabel();
@@ -78,18 +78,28 @@ public class TelaMenuLivro extends BaseWindow {
         jPanelFundo.add(bt_autores, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, 400, 230));
         jPanelFundo.add(lb_editoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 170, 110));
 
-        bt_emprestimos.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
-        bt_emprestimos.setText("EDITORAS");
-        bt_emprestimos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        bt_emprestimos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(bt_emprestimos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 130, 400, 230));
+        bt_editoras.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
+        bt_editoras.setText("EDITORAS");
+        bt_editoras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_editoras.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_editoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_editorasActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_editoras, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 130, 400, 230));
         jPanelFundo.add(lb_areasDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 170, 110));
 
-        bt_reservas.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
-        bt_reservas.setText("ÁREAS DO DIREITO");
-        bt_reservas.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
-        bt_reservas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jPanelFundo.add(bt_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 400, 230));
+        bt_areasDireito.setFont(new java.awt.Font("Arial", 1, 40)); // NOI18N
+        bt_areasDireito.setText("ÁREAS DO DIREITO");
+        bt_areasDireito.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
+        bt_areasDireito.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        bt_areasDireito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_areasDireitoActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_areasDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 400, 230));
         jPanelFundo.add(lb_exemplares, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 170, 110));
 
         bt_reservas1.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
@@ -147,6 +157,16 @@ public class TelaMenuLivro extends BaseWindow {
         MainWindow.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
+    private void bt_editorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_editorasActionPerformed
+        this.setVisible(false);
+        TelaEditoras.main(null);
+    }//GEN-LAST:event_bt_editorasActionPerformed
+
+    private void bt_areasDireitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_areasDireitoActionPerformed
+        this.setVisible(false);
+        TelaAreasDireito.main(null);
+    }//GEN-LAST:event_bt_areasDireitoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,10 +218,10 @@ public class TelaMenuLivro extends BaseWindow {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_areasDireito;
     private javax.swing.JButton bt_autores;
-    private javax.swing.JButton bt_emprestimos;
+    private javax.swing.JButton bt_editoras;
     private javax.swing.JButton bt_livros;
-    private javax.swing.JButton bt_reservas;
     private javax.swing.JButton bt_reservas1;
     private javax.swing.JButton bt_reservas2;
     private javax.swing.JButton bt_voltar;

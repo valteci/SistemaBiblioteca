@@ -12,12 +12,12 @@ import view.utils.BaseWindow;
  *
  * @author junio
  */
-public class TelaAlterarAutores extends BaseWindow {
+public class TelaAlterarEditoras extends BaseWindow {
 
     /**
      * Creates new form TelaAlterarColaborador
      */
-    public TelaAlterarAutores() {
+    public TelaAlterarEditoras() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
@@ -46,6 +46,9 @@ public class TelaAlterarAutores extends BaseWindow {
         jLabel4 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
         ckb_alterarNome = new javax.swing.JCheckBox();
+        txt_local = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        ckb_alterarLocal = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,27 +68,27 @@ public class TelaAlterarAutores extends BaseWindow {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ALTERAR AUTOR");
+        jLabel1.setText("ALTERAR EDITORA");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 720, 80));
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("ALTERAR");
-        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 150, 50));
+        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 150, 50));
 
         txt_matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Id:");
-        jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 70, -1));
+        jLabel2.setText("Id da Editora:");
+        jPanelFundo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 100, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Nome");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 70, -1));
+        jLabel4.setText("Novo Nome:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 100, -1));
 
         txt_nome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_nome.setEnabled(false);
@@ -105,20 +108,37 @@ public class TelaAlterarAutores extends BaseWindow {
         });
         jPanel1.add(ckb_alterarNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 470, 110));
+        txt_local.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txt_local.setEnabled(false);
+        jPanel1.add(txt_local, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 230, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Novo Local:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 100, -1));
+
+        ckb_alterarLocal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ckb_alterarLocal.setText("Alterar");
+        ckb_alterarLocal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ckb_alterarLocalItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(ckb_alterarLocal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
+
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 470, 190));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("ALTERE OS DADOS");
         jPanelFundo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
 
-        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 430));
+        getContentPane().add(jPanelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaAutores.main(null);
+        TelaEditoras.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void ckb_alterarNomeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ckb_alterarNomeStateChanged
@@ -135,6 +155,17 @@ public class TelaAlterarAutores extends BaseWindow {
             txt_nome.setEnabled(false);
         }
     }//GEN-LAST:event_ckb_alterarNomeItemStateChanged
+
+    private void ckb_alterarLocalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ckb_alterarLocalItemStateChanged
+        JCheckBox ckb = (JCheckBox) evt.getSource();
+        if (ckb.isSelected()) {
+            txt_local.setEnabled(true);
+        }
+        else {
+            txt_local.setText("");
+            txt_local.setEnabled(false);
+        }
+    }//GEN-LAST:event_ckb_alterarLocalItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -153,14 +184,18 @@ public class TelaAlterarAutores extends BaseWindow {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAlterarAutores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TelaAlterarEditoras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,23 +204,26 @@ public class TelaAlterarAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarAutores().setVisible(true);
+                new TelaAlterarEditoras().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_voltar;
+    private javax.swing.JCheckBox ckb_alterarLocal;
     private javax.swing.JCheckBox ckb_alterarNome;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTextField txt_local;
     private javax.swing.JTextField txt_matricula;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
