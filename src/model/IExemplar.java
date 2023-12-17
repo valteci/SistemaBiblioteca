@@ -6,6 +6,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 
 public interface IExemplar {
@@ -18,7 +19,7 @@ public interface IExemplar {
     public void setId(int id);
     public void setPreco(double preco);
     public void setDataAquisicao(Date data);
-    public ArrayList<IEmprestimo> getLivrosEmprestimo();
+    public Iterator<IEmprestimo> getLivrosEmprestimo();
     
     //lado n da relação
     public ILivro getLivro();
@@ -31,8 +32,8 @@ public interface IExemplar {
     public boolean estaEmprestado();
     public void setLivrosEmprestimos(ArrayList<IEmprestimo> livros);
     
-    public IReserva getReserva();
-    public void setReserva(IReserva reserva);
+    public Iterator<IReserva> getReservas();
+    public void setReservas(Iterator<IReserva> reservas);
     
 }
 

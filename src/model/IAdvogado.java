@@ -4,8 +4,14 @@
  */
 package model;
 
+import java.util.Iterator;
+
 
 public interface IAdvogado extends IColaborador {
     public String getNumeroOAB();
     public void setNumeroOAB(String numeroOAB);
+    
+    public Iterator<IReserva> getReservas();
+    public void setReservas(Iterator<IReserva> reservas);
+    
 }

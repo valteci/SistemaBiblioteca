@@ -11,8 +11,10 @@ public interface IReserva {
     public IAdvogado getAdvogado();
     public Date getDataReserva();
     public int getDiasReserva();
+    public IExemplar getExemplarReserva();
     
     public void setAdvogado(IAdvogado advogado);
     public void setDataReserva(Date data);
     public void setDiasReserva(int dias);
+    public void setExemplarResrva(IExemplar exemplar);
 }
