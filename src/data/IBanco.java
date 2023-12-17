@@ -75,7 +75,7 @@ public interface IBanco {
     //CRUD relacionamento EMPRÉSTIMO
     public ResultSet getTodosEmprestimos() throws Exception;
     public ResultSet getEmprestimosEmAtraso() throws Exception;
-    public void alterarEmprestimo(IEmprestimo novoEmprestimo) throws Exception;
+    public void alterarEmprestimo(int idExemplar, String matriculaColaborador, IEmprestimo novoEmprestimo) throws Exception;
     public void removerEmprestimo(IEmprestimo emprestimo) throws Exception;
     public void criarEmprestimo(IEmprestimo emprestimo) throws Exception;
     

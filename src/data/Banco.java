@@ -8,6 +8,7 @@ package data;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.Emprestimo;
 import model.IAdvogado;
 import model.IAreaDireito;
 import model.IAutor;
@@ -493,7 +494,11 @@ public class Banco implements IBanco {
 
     @Override
     public void removerColaborador(String matricula) throws Exception {
-        
+        comando.execute(String.format(
+                "delete from colaborador where matricula='%s';",
+                matricula
+            )
+        );
     }
 
     @Override
@@ -569,7 +574,7 @@ public class Banco implements IBanco {
 
     @Override
     public ResultSet getTodosEmprestimos() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery("select * from emprestimo;");
     }
 
     @Override
@@ -578,18 +583,60 @@ public class Banco implements IBanco {
     }
 
     @Override
-    public void alterarEmprestimo(IEmprestimo novoEmprestimo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void alterarEmprestimo(int idExemplar, String matriculaColaborador, IEmprestimo novoEmprestimo) throws Exception {
+        
+        int novoId = novoEmprestimo.getExemplar().getId();
+        String novaMatricula = novoEmprestimo.getColaborador().getMatricula();
+        double novaMulta = novoEmprestimo.getMulta();
+        String novaDataEmprestimo = novoEmprestimo.getDataEmprestimo().toString();
+        String novaDataDevolucao = novoEmprestimo.getDataDevolucao().toString();
+        
+        comando.execute(String.format(
+                "update emprestimo set idExemplar=%d, " + 
+                "matriculaColaborador='%s', multa=%.2f, dataDevolucao='%s', " +
+                "dataEmprestimo='%s' where idExemplar=%d and " + 
+                "matriculaColaborador='%s';",
+                novoId,
+                novaMatricula,
+                novaMulta,
+                novaDataDevolucao,
+                novaDataEmprestimo,
+                idExemplar,
+                matriculaColaborador
+            )
+        );
     }
 
     @Override
     public void removerEmprestimo(IEmprestimo emprestimo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        int idExemplar = emprestimo.getExemplar().getId();
+        String matriculaColaborador = emprestimo.getColaborador().getMatricula();
+        
+        comando.execute(String.format(
+                "delete from emprestimo where idExemplar=%d and " +
+                "matriculaColaborador='%s';",
+                idExemplar,
+                matriculaColaborador
+            )
+        );
     }
 
     @Override
     public void criarEmprestimo(IEmprestimo emprestimo) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int idExemplar = emprestimo.getExemplar().getId();
+        String matriculaColaborador = emprestimo.getColaborador().getMatricula();
+        String dataEmprestimo = emprestimo.getDataEmprestimo().toString();
+        
+        comando.execute(String.format(
+                "insert into emprestimo (idExemplar, " + 
+                "matriculaColaborador, multa, dataEmprestimo) values " + 
+                "(%d, '%s', 0.0, '%s');",
+                idExemplar,
+                matriculaColaborador,
+                dataEmprestimo
+            )
+        );
     }
 
     @Override
