@@ -41,11 +41,8 @@ CREATE TABLE exemplar (
 	status VARCHAR(8) CHECK (status IN ('ativo', 'inativo')) NOT NULL,
 	dataAquisicao DATE NOT NULL,
 	isbnLivro TEXT NOT NULL,
-	matriculaColaborador_reserva TEXT NULL,
-	dataReserva DATE NULL,
 	diasReserva INTEGER NULL,
-	FOREIGN KEY(isbnLivro) REFERENCES livro(isbn),
-	FOREIGN KEY(matriculaColaborador_reserva) REFERENCES colaborador(matricula)
+	FOREIGN KEY(isbnLivro) REFERENCES livro(isbn)
 );
 
 CREATE TABLE livros_excluidos(
@@ -72,6 +69,16 @@ CREATE TABLE autor_livros(
 	PRIMARY KEY(idAutor, isbn),
 	FOREIGN KEY(idAutor) REFERENCES autor(idAutor),
 	FOREIGN KEY(isbn) REFERENCES livro(isbn)
+);
+
+CREATE TABLE reserva (
+	matriculaAdvogado TEXT NOT NULL,
+	idExemplar INTEGER NOT NULL,
+	dataReserva DATE NOT NULL,
+	dataLiberacao DATE NULL,
+	PRIMARY KEY(matriculaAdvogado, idExemplar),
+	FOREIGN KEY(matriculaAdvogado) REFERENCES colaborador(matricula),
+	FOREIGN KEY(idExemplar) REFERENCES exemplar(idExemplar)
 );
 
 CREATE TABLE login(

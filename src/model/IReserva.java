@@ -10,11 +10,12 @@ import java.util.Date;
 public interface IReserva {
     public IAdvogado getAdvogado();
     public Date getDataReserva();
-    public int getDiasReserva();
+    public Date getDataLiberacao();
     public IExemplar getExemplarReserva();
     
+    
     public void setAdvogado(IAdvogado advogado);
-    public void setDataReserva(Date data);
-    public void setDiasReserva(int dias);
+    public void setDataReserva(Date data);    
+    public void setDataLiberacao(Date data);
     public void setExemplarReserva(IExemplar exemplar);
 }

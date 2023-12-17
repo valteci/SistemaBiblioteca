@@ -11,7 +11,7 @@ public class Reserva implements IReserva {
     
     private IAdvogado advogado = null;
     private Date dataReserva = null;
-    private int diasReserva = 0;
+    private Date dataLiberacao = null;
     private IExemplar exemplarReserva = null;
     
     public Reserva() {};
@@ -32,14 +32,16 @@ public class Reserva implements IReserva {
     }
 
     @Override
-    public int getDiasReserva() {
-        return diasReserva;
+    public Date getDataLiberacao() {
+        return this.dataLiberacao;
     }
 
     @Override
-    public void setDiasReserva(int diasReserva) {
-        this.diasReserva = diasReserva;
+    public void setDataLiberacao(Date data) {
+        this.dataLiberacao = data;
     }
+
+    
 
     @Override
     public IExemplar getExemplarReserva() {
