@@ -18,11 +18,10 @@ public class SistemaBiblioteca {
         
         try {
             IBanco banco = Banco.getInstance("postgres", "1Z2ht6b.", "SistemaBiblioteca");
+            Login.main(null);
         } catch(Exception erro) {
             System.err.println(erro.getMessage());
-        }
-        
-        Login.main(null);
+        }                
     }
     
 }

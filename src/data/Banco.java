@@ -99,22 +99,50 @@ public class Banco implements IBanco {
 
     @Override
     public ResultSet getAutor(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery(
+                String.format(
+                        "select * from autor where idAutor = '%d';",
+                        id
+                )
+            );
     }
 
     @Override
     public void alterarAutor(IAutor novoAutor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        String nomeAutor = novoAutor.getNome();
+        int idAutor = novoAutor.getId();
+        
+        comando.execute(
+            String.format(
+                    "update autor set nome = '%s' where idAutor = %d;",
+                    nomeAutor,
+                    idAutor
+            )
+        );
     }
 
     @Override
     public void removerAutor(int idAutor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        comando.execute(
+            String.format(
+                    "delete from autor where idAutor = %d",
+                    idAutor
+            )
+        );
     }
 
     @Override
     public void criarAutor(IAutor autor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        String nomeAutor = autor.getNome();
+        
+        comando.execute(
+            String.format(
+                    "insert into autor (nome) values ('%s')",
+                    nomeAutor
+            )
+        );
     }
 
     @Override
@@ -289,12 +317,20 @@ public class Banco implements IBanco {
 
     @Override
     public String getEmail() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var resultado = comando.executeQuery("select nomeUsuario from login;");
+        resultado.next();
+        String email = resultado.getString("nomeUsuario");
+        
+        return email;                
     }
 
     @Override
     public String getHashSenha() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        var resultado = comando.executeQuery("select hashSenha from login;");
+        resultado.next();        
+        String hashSenha = resultado.getString("hashSenha");
+        
+        return hashSenha;
     }
 
     @Override

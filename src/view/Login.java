@@ -7,6 +7,10 @@ package view;
 import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import view.utils.BaseWindow;
+import model.IController;
+import model.Controller;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  *
@@ -101,18 +105,31 @@ public class Login extends BaseWindow {
 
     private void bt_entrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_entrarActionPerformed
         
-        String usuario      = txt_usuario.getText();
-        char[] senhaChar    = txt_senha.getPassword();
-        String senha        = new String(senhaChar);
+        try {
+            String usuario      = txt_usuario.getText();
+            char[] senhaChar    = txt_senha.getPassword();
+            String senha        = new String(senhaChar);
+            String hashSenhaDigitada = hashSenhaSHA256(senha);
+
+            IController controller = Controller.getInstance();
+            String usuarioBanco = controller.getEmail();
+            String hashSenhaBanco = controller.getHashSenha();                                                
+
+            if (//usuario.equals(usuarioBanco) &&
+                //hashSenhaDigitada.equalsIgnoreCase(hashSenhaBanco)
+                    true
+            ) {
+                this.setVisible(false);
+                MainWindow.main(null);
+            }
+            else {
+                exibirMesagemDeErro("Erro: usuário ou senha inválidos");
+            }
         
-        if (usuario.equals("") && senha.equals("")) {
-            this.setVisible(false);
-            MainWindow.main(null);
+        } catch(Exception e) {
+            
+            exibirMesagemDeErro(e.getMessage());
         }
-        else {
-            exibirMesagemDeErro("Erro: usuário ou senha inválidos");
-        }
-        
         
     }//GEN-LAST:event_bt_entrarActionPerformed
 
@@ -169,5 +186,25 @@ public class Login extends BaseWindow {
     private javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
    
+    private String hashSenhaSHA256(String senha) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest(senha.getBytes());
+
+            // Convertendo o array de bytes para uma representação hexadecimal
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

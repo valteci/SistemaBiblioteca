@@ -9,6 +9,15 @@ import java.util.Iterator;
 
 public interface IController {
     
-    Iterator<IAutor> getTodosAutores() throws Exception;
+    
+    public String getEmail() throws Exception;
+    public String getHashSenha() throws Exception;
+    
+    //CREUD autor
+    public Iterator<IAutor> getTodosAutores() throws Exception;
+    public IAutor getAutor(int id) throws Exception;
+    public void alterarAutor(IAutor novoAutor) throws Exception;
+    public void removerAutor(int idAutor) throws Exception;
+    public void criarAutor(IAutor autor) throws Exception;
     
 }
