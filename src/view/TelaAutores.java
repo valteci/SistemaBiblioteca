@@ -38,8 +38,8 @@ public class TelaAutores extends BaseWindow {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bt_deletarPorId = new javax.swing.JButton();
+        bt_deletarSelecionado = new javax.swing.JButton();
         bt_cadastrarColaborador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         bt_buscarPorId = new javax.swing.JButton();
@@ -85,23 +85,23 @@ public class TelaAutores extends BaseWindow {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("DELETAR POR ID");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_deletarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_deletarPorId.setText("DELETAR POR ID");
+        bt_deletarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_deletarPorIdActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel3.add(bt_deletarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setText("DELETAR SELECIONADO");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_deletarSelecionado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_deletarSelecionado.setText("DELETAR SELECIONADO");
+        bt_deletarSelecionado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_deletarSelecionadoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel3.add(bt_deletarSelecionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 260, 140));
 
@@ -207,13 +207,52 @@ public class TelaAutores extends BaseWindow {
         TelaMenuLivro.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bt_deletarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deletarPorIdActionPerformed
+        try {
+            
+            IController controller = Controller.getInstance();
+            int idAutor = getIntFromUser("Digite o id do autor");
+            
+            if (idAutor == -1) return;
+            
+            if (! controller.existeAutor(idAutor))
+                throw new Exception("Autor não cadastrado!");
+            
+            controller.removerAutor(idAutor);
+            exibirMensagemInformativa("Autor deletado com sucesso");
+            
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_deletarPorIdActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bt_deletarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deletarSelecionadoActionPerformed
+        try {
+            
+            if (!exibirMensagemConfirmacao("Tem certeza que deseja excluir o autor?"))
+                return;
+            
+            Iterator<Object> linha = getLinhaSelecionada(table);
+            
+            if (! linha.hasNext())
+            throw new Exception("Selecione um registro primeiro");
+            
+            int idAutor = Integer.parseInt(linha.next().toString());
+            
+            IController controller = Controller.getInstance();
+            if (! controller.existeAutor(idAutor))
+                throw new Exception("Autor não cadastrado!");
+            
+            controller.removerAutor(idAutor);
+            
+            exibirMensagemInformativa("Autor deletado com sucesso!");
+            
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_deletarSelecionadoActionPerformed
 
     private void bt_buscarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorIdActionPerformed
         try {
@@ -319,9 +358,9 @@ public class TelaAutores extends BaseWindow {
     private javax.swing.JButton bt_buscarPorId;
     private javax.swing.JButton bt_buscarTodos;
     private javax.swing.JButton bt_cadastrarColaborador;
+    private javax.swing.JButton bt_deletarPorId;
+    private javax.swing.JButton bt_deletarSelecionado;
     private javax.swing.JButton bt_voltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

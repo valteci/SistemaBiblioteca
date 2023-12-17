@@ -190,6 +190,22 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         );
     }
     
+    protected boolean exibirMensagemConfirmacao(String mensagem) {
+        
+        int resposta = JOptionPane.showConfirmDialog(
+            null,
+            mensagem,
+            "CONFIRMAÇÃO",
+            JOptionPane.YES_NO_OPTION
+        );
+
+        if (resposta == JOptionPane.YES_OPTION)            
+            return true;
+        
+        return false;
+    }
+    
+    
     protected String getStringFromUser(String mensagem) {
         String valorDigitado = JOptionPane.showInputDialog(mensagem);
         
