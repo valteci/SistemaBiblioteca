@@ -266,4 +266,14 @@ public class TelaMenuLivro extends BaseWindow {
             exibirMesagemDeErro(e.getMessage());
         }
     }
+
+    @Override
+    protected Object[] templedMethodObjectType(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+
+
+
 }

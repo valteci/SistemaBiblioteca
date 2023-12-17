@@ -113,47 +113,81 @@ public class Controller implements IController{
     
     @Override
     public Iterator<IEditora> getTodasEditoras() throws Exception {
+        
         ArrayList<IEditora> resultado = new ArrayList<IEditora>();
-        /*
+        
         IBanco banco = Banco.getInstance();
         
-        ResultSet resultadoQuery = banco.getTodosAutores();
+        ResultSet resultadoQuery = banco.getTodasEditoras();
         
         while (resultadoQuery.next()) {
-            int id = resultadoQuery.getInt("idAutor");
+            int id = resultadoQuery.getInt("idEditora");
             String nome = resultadoQuery.getString("nome");
+            String local = resultadoQuery.getString("localizacao");
             
-            Autor autor = new Autor(id, nome);
-            resultado.add(autor);
+            Editora editora = new Editora(id, nome, local);
+            resultado.add(editora);
         }
-        */
+        
         
         return resultado.iterator();
     }
 
     @Override
     public IEditora getEditora(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IEditora resultado = null;
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getEditora(id);
+        boolean existeEditora = resultadoQuery.next();
+        
+        if (! existeEditora)
+            throw new Exception("Editora não cadastrada");
+        
+        String nomeEditora = resultadoQuery.getString("nome");
+        String local = resultadoQuery.getString("localizacao");
+        
+        Editora editora = new Editora(id, nomeEditora, local);
+        
+        resultado = editora;
+        
+        return resultado;
     }
 
     @Override
     public void alterarEditora(IEditora novaEditora) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        IBanco banco = Banco.getInstance();
+        
+        if (novaEditora.getNome().equals("") && 
+            novaEditora.getLocal().equals("")
+        ) {            
+            throw new Exception("Selecione ao menos 1 dado para alterar");            
+        }
+        
+        banco.alterarEditora(novaEditora);
     }
 
     @Override
     public void removerEditora(int idEditora) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        banco.removerEditora(idEditora);
     }
 
     @Override
     public void criarEditora(IEditora editora) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        banco.criarEditora(editora);
     }
 
     @Override
     public boolean existeEditora(int idEditora) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getEditora(idEditora);
+        boolean existeEditora = resultadoQuery.next();
+        
+        return existeEditora;
     }
 
     

@@ -171,4 +171,16 @@ public class TelaExcluirExamplar extends BaseWindow {
     private javax.swing.JTextField txt_nome;
     private javax.swing.JTextField txt_nome1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    protected Object[] templedMethodObjectType(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+
+
+
+
+
 }

@@ -27,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.IAutor;
+import model.IEditora;
 
 
 public abstract class BaseWindow extends javax.swing.JFrame {
@@ -237,6 +238,34 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         return matcher.matches();
     }
     
+    protected<T> Iterator<Object> converIteratorToObject(Iterator<T> it) {
+        
+        ArrayList<Object> resultado = new ArrayList<Object>();
+        
+        while (it.hasNext()) {
+            resultado.add(it.next());
+        }
+        
+        return resultado.iterator();
+    }
+    
+    protected abstract Object[] templedMethodObjectType(Object obj);
+    
+    
+    protected void listarItens(JTable table, Iterator<Object> itens) {
+        //tabela deve ter 2 campos: id e nome.
+        var model = (DefaultTableModel) table.getModel();
+        
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+        
+        while (itens.hasNext()) {
+            Object item = itens.next();
+            
+            model.addRow(templedMethodObjectType(item));
+        }
+    }
+    
     protected void listarAutores(JTable table, Iterator<IAutor> autores) {
         //tabela deve ter 2 campos: id e nome.
         var model = (DefaultTableModel) table.getModel();
@@ -270,6 +299,8 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         );
         
     }
+    
+    
     
     protected Iterator<Object> getLinhaSelecionada(JTable table) throws Exception{
         ArrayList<Object> resultado = new ArrayList<Object>();

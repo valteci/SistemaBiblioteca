@@ -182,4 +182,18 @@ public class TelaCadastrarExamplares extends BaseWindow {
     private javax.swing.JTextField txt_nome1;
     private javax.swing.JTextField txt_nome2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    protected Object[] templedMethodObjectType(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+
+
+
+
+
+
+
 }

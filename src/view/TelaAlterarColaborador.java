@@ -418,4 +418,14 @@ public class TelaAlterarColaborador extends BaseWindow {
     private javax.swing.JTextField txt_numeroOAB;
     private javax.swing.JTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    protected Object[] templedMethodObjectType(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
+
+
+
 }
