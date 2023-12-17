@@ -54,7 +54,7 @@ public interface IBanco {
     //CRUD livro
     public ResultSet getTodosLivros() throws Exception;
     public ResultSet getLivro(String ISBN) throws Exception;
-    public void alterarLivro(ILivro novoLivro) throws Exception;
+    public void alterarLivro(String isbnAtual, ILivro novoLivro) throws Exception;
     public void removerLivro(String ISBN) throws Exception;
     public void criarLivro(ILivro livro) throws Exception;
     

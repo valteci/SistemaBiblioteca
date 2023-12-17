@@ -19,7 +19,7 @@ public interface IExemplar {
     public void setId(int id);
     public void setPreco(double preco);
     public void setDataAquisicao(Date data);
-    public Iterator<IEmprestimo> getLivrosEmprestimo();
+    public Iterator<IEmprestimo> getEmprestimos();
     
     //lado n da relação
     public ILivro getLivro();
@@ -30,7 +30,7 @@ public interface IExemplar {
     //relacionamentos
     public boolean estaReservado();
     public boolean estaEmprestado();
-    public void setLivrosEmprestimos(ArrayList<IEmprestimo> livros);
+    public void setEmprestimos(Iterator<IEmprestimo> livros);
     
     public Iterator<IReserva> getReservas();
     public void setReservas(Iterator<IReserva> reservas);

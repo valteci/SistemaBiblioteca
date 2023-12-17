@@ -6,7 +6,7 @@ CREATE TABLE autor (
 CREATE TABLE editora (
 	idEditora SERIAL PRIMARY KEY,
 	nome TEXT NOT NULL,
-	localalizacao TEXT NULL 
+	localizacao TEXT NULL 
 );
 
 CREATE TABLE areaDireito (
