@@ -8,11 +8,13 @@ package data;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.IAdvogado;
 import model.IAreaDireito;
 import model.IAutor;
 import model.IColaborador;
 import model.IEditora;
 import model.IEmprestimo;
+import model.IEstagiario;
 import model.IExemplar;
 import model.ILivro;
 import model.IReserva;
@@ -332,52 +334,237 @@ public class Banco implements IBanco {
 
     @Override
     public ResultSet getTodosExemplares() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery("select * from exemplar;");
     }
 
     @Override
     public ResultSet getExemplar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery(String.format(
+                "select * from exemplar where idExemplar = %d;",
+                id
+            )
+        );
     }
 
     @Override
-    public void alterarExemplar(IExemplar novoExempar) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void alterarExemplar(IExemplar novoExemplar) throws Exception {
+                
+        double preco = novoExemplar.getPreco();
+        String status = "ativo";
+        String dataAquisicao = novoExemplar.getDataAquisicao().toString();
+        String isbn = novoExemplar.getLivro().getISBN();
+        int id = novoExemplar.getId();
+        
+        if (! novoExemplar.estaAtivo())
+            status = "inativo";
+        
+        comando.execute(String.format(
+                "update exemplar set preco=%.2f, status='%s', " + 
+                "dataAquisicao='%s', isbnLivro='%s' where idExemplar=%d;",
+                preco,
+                status,
+                dataAquisicao,
+                isbn,
+                id
+            )
+        );
     }
 
     @Override
     public void removerExemplar(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        comando.execute(String.format(
+                "delete from exemplar where idExemplar=%d;",
+                id
+            )
+        );
     }
 
     @Override
     public void criarExemplar(IExemplar exemplar) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        double preco = exemplar.getPreco();
+        String status = "ativo";
+        String dataAquisicao = exemplar.getDataAquisicao().toString();
+        String isbn = exemplar.getLivro().getISBN();
+        
+        if (!exemplar.estaAtivo())
+            status = "inativo";
+        
+        comando.execute(String.format(
+                "insert into exemplar (preco, status, dataAquisicao, " + 
+                "isbnLivro) values (%.2f, '%s', '%s', '%s');",
+                preco,
+                status,
+                dataAquisicao,
+                isbn
+            )
+        );
     }
 
     @Override
     public ResultSet getTodosColoboradores() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery("select * from colaborador;");
     }
 
     @Override
     public ResultSet getColaborador(String matricula) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery(String.format(
+                "select * from colaborador where matricula='%s';",
+                matricula
+            )
+        );
     }
 
     @Override
-    public void alterarColaborador(IColaborador novoColaborador) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void alterarColaborador(String matriculaAtual, IColaborador novoColaborador) throws Exception {
+        String matricula = novoColaborador.getMatricula();
+        String email = novoColaborador.getEmail();
+        String nome = novoColaborador.getNome();
+        String telefone = novoColaborador.getTelefone();        
+        String status = "ativo";
+        
+        
+        if (! novoColaborador.estaAtivo())
+            status = "inativo";
+        
+        if (novoColaborador instanceof IAdvogado) {
+            String tipo = "advogado";
+            String oab = ((IAdvogado) novoColaborador).getNumeroOAB();
+            
+            comando.execute(String.format(
+                    "update colaborador set matricula='%s', " + 
+                    "email='%s', nome='%s', telefone='%s', " +
+                    "status='%s', numeroOab='%s', tipoColaborador='%s' " + 
+                    "where matricula='%s';",
+                    matricula,
+                    email,
+                    nome,
+                    telefone,
+                    status,
+                    oab,
+                    tipo,
+                    matriculaAtual
+                )
+            );
+            
+            return;
+        }
+        
+        if (novoColaborador instanceof IEstagiario) {
+            
+            String tipo = "estagiario";
+            
+            comando.execute(String.format(
+                    "update colaborador set matricula='%s', " + 
+                    "email='%s', nome='%s', telefone='%s', " +
+                    "status='%s', numeroOab=NULL, tipoColaborador='%s' " +
+                    "where matricula='%s';",
+                    matricula,
+                    email,
+                    nome,
+                    telefone,
+                    status,
+                    tipo,
+                    matriculaAtual
+                )
+            );
+            
+            return;
+        }
+        
+        //então é funcionario!
+        
+        String tipo = "funcionario";
+            
+            comando.execute(String.format(
+                    "update colaborador set matricula='%s', " + 
+                    "email='%s', nome='%s', telefone='%s', " +
+                    "status='%s', numeroOab=NULL, tipoColaborador='%s' " + 
+                    "where matricula='%s';",
+                    matricula,
+                    email,
+                    nome,
+                    telefone,
+                    status,
+                    tipo,
+                    matriculaAtual
+                )
+            );
     }
 
     @Override
     public void removerColaborador(String matricula) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void criarColaborador(IColaborador colaborador) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        String matricula = colaborador.getMatricula();
+        String email = colaborador.getEmail();
+        String nome = colaborador.getNome();
+        String telefone = colaborador.getTelefone();
+        String status = "ativo";
+        
+        if (! colaborador.estaAtivo())
+            status = "inativo";
+        
+        if (colaborador instanceof IAdvogado) {
+            
+            String oab = ((IAdvogado) colaborador).getNumeroOAB();
+            String tipo = "advogado";
+            
+            comando.execute(String.format(
+                    "insert into colaborador (matricula, email, nome, " +
+                    "telefone, status, numeroOAB, tipoColaborador) values " + 
+                    "('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+                    matricula,
+                    email,
+                    nome,
+                    telefone,
+                    status,
+                    oab,
+                    tipo                    
+                )
+            );
+            
+            return;
+        }
+        
+        if(colaborador instanceof IEstagiario) {
+            
+            String tipo = "estagiario";
+            
+            comando.execute(String.format(
+                    "insert into colaborador (matricula, email, nome, " +
+                    "telefone, status, numeroOAB, tipoColaborador) values " + 
+                    "('%s', '%s', '%s', '%s', '%s', NULL, '%s');",
+                    matricula,
+                    email,
+                    nome,
+                    telefone,
+                    status,                    
+                    tipo                    
+                )
+            );
+            
+            return;
+        }
+        
+        //então é IFuncionario!
+        String tipo = "funcionario";
+        
+        comando.execute(String.format(
+                "insert into colaborador (matricula, email, nome, " +
+                "telefone, status, numeroOAB, tipoColaborador) values " + 
+                "('%s', '%s', '%s', '%s', '%s', NULL, '%s');",
+                matricula,
+                email,
+                nome,
+                telefone,
+                status,
+                tipo
+            )
+        );
     }
 
     @Override

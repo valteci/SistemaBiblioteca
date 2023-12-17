@@ -1,3 +1,7 @@
+CREATE TYPE tipoColaborador AS ENUM (
+	'advogado', 'funcionario', 'estagiario'
+);
+
 CREATE TABLE autor (
 	idAutor SERIAL PRIMARY KEY,
 	nome TEXT
@@ -32,7 +36,8 @@ CREATE TABLE colaborador (
 	nome TEXT NOT NULL,
 	telefone TEXT NOT NULL,
 	status VARCHAR(8) CHECK (status IN ('ativo', 'inativo')) NOT NULL,
-	numeroOAB TEXT NULL
+	numeroOAB TEXT NULL,
+	tipoColaborador tipoColaborador NOT NULL
 );
 
 CREATE TABLE exemplar (
@@ -41,7 +46,6 @@ CREATE TABLE exemplar (
 	status VARCHAR(8) CHECK (status IN ('ativo', 'inativo')) NOT NULL,
 	dataAquisicao DATE NOT NULL,
 	isbnLivro TEXT NOT NULL,
-	diasReserva INTEGER NULL,
 	FOREIGN KEY(isbnLivro) REFERENCES livro(isbn)
 );
 

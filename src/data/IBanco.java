@@ -68,7 +68,7 @@ public interface IBanco {
     //CRUD colaborador
     public ResultSet getTodosColoboradores() throws Exception;
     public ResultSet getColaborador(String matricula) throws Exception;
-    public void alterarColaborador(IColaborador novoColaborador) throws Exception;
+    public void alterarColaborador(String matriculaAtual, IColaborador novoColaborador) throws Exception;
     public void removerColaborador(String matricula) throws Exception;
     public void criarColaborador(IColaborador colaborador) throws Exception;
         
