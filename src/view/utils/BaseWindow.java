@@ -266,6 +266,18 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         }
     }
     
+    protected void listarItem(JTable table, Object item) {
+        
+        var model = (DefaultTableModel) table.getModel();
+
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+
+
+        model.addRow(templedMethodObjectType(item));
+    }
+                    
+    
     protected void listarAutores(JTable table, Iterator<IAutor> autores) {
         //tabela deve ter 2 campos: id e nome.
         var model = (DefaultTableModel) table.getModel();

@@ -4,7 +4,10 @@
  */
 package view;
 
-import javax.swing.JComboBox;
+import model.Controller;
+import model.Editora;
+import model.IController;
+import model.IEditora;
 import view.utils.BaseWindow;
 
 /**
@@ -42,7 +45,7 @@ public class TelaCadastrarEditoras extends BaseWindow {
         bt_cadastrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txt_nome = new javax.swing.JTextField();
-        txt_nome1 = new javax.swing.JTextField();
+        txt_local = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -85,8 +88,8 @@ public class TelaCadastrarEditoras extends BaseWindow {
         txt_nome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 420, 30));
 
-        txt_nome1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_nome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 420, 30));
+        txt_local.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_local, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 420, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("Local:");
@@ -105,7 +108,22 @@ public class TelaCadastrarEditoras extends BaseWindow {
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
-        
+        try {
+            IController controller = Controller.getInstance();
+            String nomeEditora = txt_nome.getText();
+            String localEditora = txt_local.getText();
+            
+            IEditora editora = new Editora(nomeEditora, localEditora);
+            controller.criarEditora(editora);
+            
+            exibirMensagemInformativa("Editora cadastrada com sucesso!");
+            
+            txt_nome.setText("");
+            txt_local.setText("");
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
     /**
@@ -160,8 +178,8 @@ public class TelaCadastrarEditoras extends BaseWindow {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTextField txt_local;
     private javax.swing.JTextField txt_nome;
-    private javax.swing.JTextField txt_nome1;
     // End of variables declaration//GEN-END:variables
 
     @Override

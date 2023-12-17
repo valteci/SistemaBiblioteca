@@ -5,7 +5,10 @@
 package view;
 
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
+import model.Controller;
+import model.Editora;
+import model.IController;
+import model.IEditora;
 import view.utils.BaseWindow;
 
 /**
@@ -17,12 +20,18 @@ public class TelaAlterarEditoras extends BaseWindow {
     /**
      * Creates new form TelaAlterarColaborador
      */
-    public TelaAlterarEditoras() {
+    public TelaAlterarEditoras(Object id) {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
         aplicarConfiguracoes();
         carregarImagem(lb_voltar, "voltar.png");
+        
+        if (id != null) {
+            txt_idEditora.setText(id.toString());
+            txt_idEditora.setEnabled(false);
+            
+        }
     }
 
     /**
@@ -39,8 +48,8 @@ public class TelaAlterarEditoras extends BaseWindow {
         lb_voltar = new javax.swing.JLabel();
         bt_voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txt_matricula = new javax.swing.JTextField();
+        bt_alterar = new javax.swing.JButton();
+        txt_idEditora = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -73,12 +82,17 @@ public class TelaAlterarEditoras extends BaseWindow {
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("ALTERAR");
-        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 150, 50));
+        bt_alterar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_alterar.setText("ALTERAR");
+        bt_alterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_alterarActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_alterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 150, 50));
 
-        txt_matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
+        txt_idEditora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanelFundo.add(txt_idEditora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Id da Editora:");
@@ -167,10 +181,41 @@ public class TelaAlterarEditoras extends BaseWindow {
         }
     }//GEN-LAST:event_ckb_alterarLocalItemStateChanged
 
+    private void bt_alterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarActionPerformed
+        try {
+            
+            IController controller = Controller.getInstance();
+            int idEditora = Integer.parseInt(txt_idEditora.getText());
+            IEditora editora = new Editora();
+            editora.setId(idEditora);
+            
+            //ver se a editora existe
+            if (! controller.existeEditora(idEditora))
+                throw new Exception("Editora não cadastrada");
+            
+            if (ckb_alterarNome.isSelected())
+                editora.setNome(txt_nome.getText());
+            
+            if (ckb_alterarLocal.isSelected())
+                editora.setLocal(txt_local.getText());
+            
+            controller.alterarEditora(editora);
+            
+            exibirMensagemInformativa("Editora alterada com sucesso!");
+            
+            txt_nome.setText("");
+            txt_local.setText("");
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+        
+    }//GEN-LAST:event_bt_alterarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(Object id) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -204,16 +249,16 @@ public class TelaAlterarEditoras extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarEditoras().setVisible(true);
+                new TelaAlterarEditoras(id).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_alterar;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JCheckBox ckb_alterarLocal;
     private javax.swing.JCheckBox ckb_alterarNome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -223,8 +268,8 @@ public class TelaAlterarEditoras extends BaseWindow {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTextField txt_idEditora;
     private javax.swing.JTextField txt_local;
-    private javax.swing.JTextField txt_matricula;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 

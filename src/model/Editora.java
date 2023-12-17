@@ -13,6 +13,11 @@ public class Editora  implements IEditora {
     
     public Editora() {};
     
+    public Editora(String nome, String local) {
+        this.nome = nome;
+        this.local = local;
+    }
+    
     public Editora(
         int idEditora,
         String nome,

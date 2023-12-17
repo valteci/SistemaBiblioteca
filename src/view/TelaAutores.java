@@ -261,7 +261,7 @@ public class TelaAutores extends BaseWindow {
             if (idAutor == -1) return;
                             
             IAutor autor = controller.getAutor(idAutor);
-            listarAutor(table, autor);
+            listarItem(table, autor);
             
         } catch(Exception erro) {
             exibirMesagemDeErro(erro.getMessage());
@@ -273,7 +273,8 @@ public class TelaAutores extends BaseWindow {
         try {
             IController controller = Controller.getInstance();
             Iterator<IAutor> autores = controller.getTodosAutores();
-            listarAutores(table, autores);
+            var autoresTabela = converIteratorToObject(autores);
+            listarItens(table, autoresTabela);
             
         } catch(Exception erro) {
             exibirMesagemDeErro(erro.getMessage());
@@ -379,7 +380,12 @@ public class TelaAutores extends BaseWindow {
 
     @Override
     protected Object[] templedMethodObjectType(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        IAutor autor = (IAutor) obj;
+        return new Object[] {
+            autor.getId(),
+            autor.getNome()
+        };
     }
 
 

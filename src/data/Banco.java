@@ -169,7 +169,7 @@ public class Banco implements IBanco {
         int id = novaEditora.getId();
         
         comando.execute(String.format(
-                "update editora set nome='%s', localizacao='%s' where" + 
+                "update editora set nome='%s', localizacao='%s' where " + 
                 "idEditora = %d;",
                 novoNome,
                 novaLocalizacao,
