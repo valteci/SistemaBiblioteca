@@ -42,7 +42,7 @@ public class TelaAutores extends BaseWindow {
         jButton3 = new javax.swing.JButton();
         bt_cadastrarColaborador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        bt_buscarPorId = new javax.swing.JButton();
         bt_buscarTodos = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bt_alterarPorId = new javax.swing.JButton();
@@ -65,10 +65,7 @@ public class TelaAutores extends BaseWindow {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME"
@@ -119,14 +116,14 @@ public class TelaAutores extends BaseWindow {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setText("BUSCAR POR ID");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorId.setText("BUSCAR POR ID");
+        bt_buscarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bt_buscarPorIdActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel5.add(bt_buscarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
 
         bt_buscarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_buscarTodos.setText("BUSCAR TODOS");
@@ -218,16 +215,26 @@ public class TelaAutores extends BaseWindow {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void bt_buscarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorIdActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            int idAutor = getIntFromUser("Digite o id do autor: ");
+            if (idAutor == -1) return;
+                            
+            IAutor autor = controller.getAutor(idAutor);
+            listarAutor(table, autor);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorIdActionPerformed
 
     private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed
         
         try {
             IController controller = Controller.getInstance();
             Iterator<IAutor> autores = controller.getTodosAutores();
-            mostrarTodosAutores(autores);
+            listarAutores(table, autores);
             
         } catch(Exception erro) {
             exibirMesagemDeErro(erro.getMessage());
@@ -241,8 +248,19 @@ public class TelaAutores extends BaseWindow {
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
+        try {        
+        Iterator<Object> linha = getLinhaSelecionada(table);
+        
+        if (! linha.hasNext())
+            throw new Exception("Selecione um registro primeiro");
+             
         this.setVisible(false);
-        TelaAlterarAutores.main(null);
+        TelaAlterarAutores.main(linha.next());
+        
+        
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
@@ -289,24 +307,7 @@ public class TelaAutores extends BaseWindow {
     }
     
     
-    private void mostrarTodosAutores(Iterator<IAutor> autores) {
-        var model = (DefaultTableModel) table.getModel();
-        
-        while (model.getRowCount()> 0)
-            model.removeRow(0);
-        
-        while (autores.hasNext()) {
-            IAutor autor = autores.next();
-            
-            model.addRow(new Object[] {
-                    autor.getId(),
-                    autor.getNome()                    
-                }
-            );
-            
-            
-        }
-    }
+    
     
     
     
@@ -315,12 +316,12 @@ public class TelaAutores extends BaseWindow {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_alterarPorId;
     private javax.swing.JButton bt_alterarSelecionado;
+    private javax.swing.JButton bt_buscarPorId;
     private javax.swing.JButton bt_buscarTodos;
     private javax.swing.JButton bt_cadastrarColaborador;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

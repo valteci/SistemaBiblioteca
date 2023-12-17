@@ -13,6 +13,8 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.imageio.ImageIO;
@@ -22,6 +24,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.IAutor;
 
 
 public abstract class BaseWindow extends javax.swing.JFrame {
@@ -192,6 +197,9 @@ public abstract class BaseWindow extends javax.swing.JFrame {
     }
     
     protected int getIntFromUser(String mensagem) throws Exception {
+        //retorna -1 se o usuário apertar em cancelar ou fechar o input
+        
+        
         String valorDigitado = JOptionPane.showInputDialog(mensagem);
         
         if (valorDigitado == null)
@@ -211,6 +219,65 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         
         
         return matcher.matches();
+    }
+    
+    protected void listarAutores(JTable table, Iterator<IAutor> autores) {
+        //tabela deve ter 2 campos: id e nome.
+        var model = (DefaultTableModel) table.getModel();
+        
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+        
+        while (autores.hasNext()) {
+            IAutor autor = autores.next();
+            
+            model.addRow(new Object[] {
+                    autor.getId(),
+                    autor.getNome()                    
+                }
+            );
+                        
+        }
+    }
+    
+    protected void listarAutor(JTable table, IAutor autor) {
+        //tabela deve ter 2 campos: id e nome.
+        var model = (DefaultTableModel) table.getModel();
+        
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+        
+        model.addRow(new Object[] {
+                autor.getId(),
+                autor.getNome()                    
+            }
+        );
+        
+    }
+    
+    protected Iterator<Object> getLinhaSelecionada(JTable table) throws Exception{
+        ArrayList<Object> resultado = new ArrayList<Object>();
+        
+        int linhaSelecionada = table.getSelectedRow();
+        
+        if (linhaSelecionada == -1)
+            throw new Exception("Selectione um registro primeiro");
+        
+        var model = (DefaultTableModel) table.getModel();
+        int quantidadeColuna = table.getColumnCount();
+        
+        for (int coluna = 0; coluna < quantidadeColuna; coluna++) {
+            
+            Object valorColuna = model.getValueAt(
+                    linhaSelecionada,
+                    coluna
+            );
+            
+            resultado.add(valorColuna);
+        }
+        
+        
+        return resultado.iterator();
     }
     
     

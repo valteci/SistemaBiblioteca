@@ -19,6 +19,10 @@ public class Autor implements IAutor {
         this.id = id;
         this.nome = nome;
     }
+    
+    public Autor(String nome) {
+        this.nome = nome;
+    }
 
     @Override
     public int getId() {

@@ -6,6 +6,10 @@ package view;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import model.Autor;
+import model.Controller;
+import model.IAutor;
+import model.IController;
 import view.utils.BaseWindow;
 
 /**
@@ -13,16 +17,20 @@ import view.utils.BaseWindow;
  * @author junio
  */
 public class TelaAlterarAutores extends BaseWindow {
-
-    /**
-     * Creates new form TelaAlterarColaborador
-     */
-    public TelaAlterarAutores() {
+    
+            
+    public TelaAlterarAutores(Object id) {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
         aplicarConfiguracoes();
         carregarImagem(lb_voltar, "voltar.png");
+        
+        if (id != null) {
+            txt_idAutor.setText(id.toString());
+            txt_idAutor.setEnabled(false);
+            
+        }
     }
 
     /**
@@ -39,8 +47,8 @@ public class TelaAlterarAutores extends BaseWindow {
         lb_voltar = new javax.swing.JLabel();
         bt_voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        txt_matricula = new javax.swing.JTextField();
+        bt_auterarAutor = new javax.swing.JButton();
+        txt_idAutor = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -70,12 +78,17 @@ public class TelaAlterarAutores extends BaseWindow {
 
         jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 100));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("ALTERAR");
-        jPanelFundo.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 150, 50));
+        bt_auterarAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_auterarAutor.setText("ALTERAR");
+        bt_auterarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_auterarAutorActionPerformed(evt);
+            }
+        });
+        jPanelFundo.add(bt_auterarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 150, 50));
 
-        txt_matricula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jPanelFundo.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
+        txt_idAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jPanelFundo.add(txt_idAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 180, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Id do Autor:");
@@ -136,10 +149,37 @@ public class TelaAlterarAutores extends BaseWindow {
         }
     }//GEN-LAST:event_ckb_alterarNomeItemStateChanged
 
+    private void bt_auterarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_auterarAutorActionPerformed
+        try {
+            
+            IController controller = Controller.getInstance();
+            int idAutor = Integer.parseInt(txt_idAutor.getText());
+            IAutor autor = new Autor();            
+            autor.setId(idAutor);
+            
+            //ver se o autor existe
+            if (! controller.existeAutor(idAutor))
+                throw new Exception("Autor não cadastrado");
+            
+            if (ckb_alterarNome.isSelected())
+                autor.setNome(txt_nome.getText());
+            
+            controller.alterarAutor(autor);
+            
+            exibirMensagemInformativa("Autor alterado com sucesso!");
+            
+            txt_nome.setText("");
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_auterarAutorActionPerformed
+
     /**
+     * @param id
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(Object id) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -169,15 +209,15 @@ public class TelaAlterarAutores extends BaseWindow {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaAlterarAutores().setVisible(true);
+                new TelaAlterarAutores(id).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_auterarAutor;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JCheckBox ckb_alterarNome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -186,7 +226,7 @@ public class TelaAlterarAutores extends BaseWindow {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JLabel lb_voltar;
-    private javax.swing.JTextField txt_matricula;
+    private javax.swing.JTextField txt_idAutor;
     private javax.swing.JTextField txt_nome;
     // End of variables declaration//GEN-END:variables
 }

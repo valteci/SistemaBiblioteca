@@ -53,7 +53,11 @@ public class Controller implements IController{
         IBanco banco = Banco.getInstance();
         
         var resultadoQuery = banco.getAutor(id);
-        resultadoQuery.next();
+        boolean existeAutor = resultadoQuery.next();
+        
+        if (! existeAutor)
+            throw new Exception("Autor não cadastrado");
+        
         String nomeAutor = resultadoQuery.getString("nome");
         
         Autor autor = new Autor(id, nomeAutor);
@@ -64,8 +68,23 @@ public class Controller implements IController{
     }
 
     @Override
+    public boolean existeAutor(int idAutor) throws Exception {
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getAutor(idAutor);
+        boolean existeAutor = resultadoQuery.next();
+        
+        return existeAutor;
+    }
+    
+    
+
+    @Override
     public void alterarAutor(IAutor novoAutor) throws Exception {
         IBanco banco = Banco.getInstance();
+        if (novoAutor.getNome().equals(""))
+            throw new Exception("Selecione ao menos 1 dado para alterar");
+        
         banco.alterarAutor(novoAutor);
     }
 

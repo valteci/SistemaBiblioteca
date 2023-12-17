@@ -19,5 +19,5 @@ public interface IController {
     public void alterarAutor(IAutor novoAutor) throws Exception;
     public void removerAutor(int idAutor) throws Exception;
     public void criarAutor(IAutor autor) throws Exception;
-    
+    public boolean existeAutor(int idAutor) throws Exception;
 }

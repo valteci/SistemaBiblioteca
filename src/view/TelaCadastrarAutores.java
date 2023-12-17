@@ -5,6 +5,10 @@
 package view;
 
 import javax.swing.JComboBox;
+import model.Autor;
+import model.Controller;
+import model.IAutor;
+import model.IController;
 import view.utils.BaseWindow;
 
 /**
@@ -96,6 +100,21 @@ public class TelaCadastrarAutores extends BaseWindow {
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
+        
+        try {
+            IController controller = Controller.getInstance();
+            String nomeAutor = txt_nome.getText();
+            IAutor autor = new Autor(nomeAutor);
+            controller.criarAutor(autor);
+            
+            exibirMensagemInformativa("Autor cadastrado com sucesso!");
+            
+            txt_nome.setText("");
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+        
         
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
