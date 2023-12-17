@@ -641,22 +641,61 @@ public class Banco implements IBanco {
 
     @Override
     public ResultSet getTodasReservas() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery("select * from reserva;");
     }
 
     @Override
-    public void alterarReserva(IReserva novaReserva) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void alterarReserva(String matriculaAdvogado, int idExemplar, IReserva novaReserva) throws Exception {
+        String novaMatricula = novaReserva.getAdvogado().getMatricula();
+        int novoIdExemplar = novaReserva.getExemplarReserva().getId();
+        String novaDataReserva = novaReserva.getDataReserva().toString();
+        String novaDaraLiberacao = novaReserva.getDataLiberacao().toString();
+        
+        comando.execute(String.format(
+                "update reserva set matriculaAdvogado='%s', " + 
+                "idExemplar=%d, dataReserva='%s', " + 
+                "dataLiberacao='%s' where matriculaAdvogado='%s' " + 
+                "and idExemplar=%d;",
+                novaMatricula,
+                novoIdExemplar,
+                novaDataReserva,
+                novaDaraLiberacao,
+                matriculaAdvogado,
+                idExemplar
+            )
+        );
     }
 
     @Override
     public void removerReserva(IReserva reserva) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        String matriculaAdvogado = reserva.getAdvogado().getMatricula();
+        int idExemplar = reserva.getExemplarReserva().getId();
+        
+        
+        comando.execute(String.format(
+                "delete from reserva where matriculaAdvogado='%s' " + 
+                "and idExemplar=%d;",
+                matriculaAdvogado,
+                idExemplar
+            )
+        );
     }
 
     @Override
     public void criarReservar(IReserva reserva) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String matriculaAdvogado = reserva.getAdvogado().getMatricula();
+        int idExemplar = reserva.getExemplarReserva().getId();
+        String dataReserva = reserva.getDataReserva().toString();
+        
+        comando.execute(String.format(
+                "insert into reserva (matriculaAdvogado, idExemplar, " + 
+                "dataReserva, dataLiberacao) values ('%s', %d, '%s', NULL);",
+                matriculaAdvogado,
+                idExemplar,
+                dataReserva
+            )
+        );
     }
 
     @Override

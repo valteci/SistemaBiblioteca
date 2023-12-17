@@ -81,7 +81,7 @@ public interface IBanco {
     
     //CRUD relacionamento reserva
     public ResultSet getTodasReservas() throws Exception;    
-    public void alterarReserva(IReserva novaReserva) throws Exception;
+    public void alterarReserva(String matriculaAdvogado, int idExemplar, IReserva novaReserva) throws Exception;
     public void removerReserva(IReserva reserva) throws Exception;
     public void criarReservar(IReserva reserva) throws Exception;
     
