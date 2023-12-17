@@ -73,3 +73,8 @@ CREATE TABLE autor_livros(
 	FOREIGN KEY(idAutor) REFERENCES autor(idAutor),
 	FOREIGN KEY(isbn) REFERENCES livro(isbn)
 );
+
+CREATE TABLE login(
+	nomeUsuario TEXT PRIMARY KEY,
+	hashSenha TEXT NOT NULL
+);
