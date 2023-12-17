@@ -3,7 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import java.util.Iterator;
+import javax.swing.table.DefaultTableModel;
 import view.utils.*;
+import model.Controller;
+import model.IAutor;
+import model.IController;
+
 
 public class TelaAutores extends BaseWindow {
 
@@ -30,14 +36,14 @@ public class TelaAutores extends BaseWindow {
         jPanelFundo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         bt_cadastrarColaborador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        bt_buscarTodos = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bt_alterarPorId = new javax.swing.JButton();
         bt_alterarSelecionado = new javax.swing.JButton();
@@ -57,7 +63,7 @@ public class TelaAutores extends BaseWindow {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -76,7 +82,7 @@ public class TelaAutores extends BaseWindow {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1150, 210));
 
@@ -122,14 +128,14 @@ public class TelaAutores extends BaseWindow {
         });
         jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setText("BUSCAR TODOS");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarTodos.setText("BUSCAR TODOS");
+        bt_buscarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                bt_buscarTodosActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel5.add(bt_buscarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 260, 140));
 
@@ -216,9 +222,18 @@ public class TelaAutores extends BaseWindow {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed
+        
+        try {
+            IController controller = Controller.getInstance();
+            Iterator<IAutor> autores = controller.getTodosAutores();
+            mostrarTodosAutores(autores);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+        
+    }//GEN-LAST:event_bt_buscarTodosActionPerformed
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
@@ -272,16 +287,40 @@ public class TelaAutores extends BaseWindow {
             }
         });
     }
+    
+    
+    private void mostrarTodosAutores(Iterator<IAutor> autores) {
+        var model = (DefaultTableModel) table.getModel();
+        
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+        
+        while (autores.hasNext()) {
+            IAutor autor = autores.next();
+            
+            model.addRow(new Object[] {
+                    autor.getId(),
+                    autor.getNome()                    
+                }
+            );
+            
+            
+        }
+    }
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_alterarPorId;
     private javax.swing.JButton bt_alterarSelecionado;
+    private javax.swing.JButton bt_buscarTodos;
     private javax.swing.JButton bt_cadastrarColaborador;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -294,7 +333,7 @@ public class TelaAutores extends BaseWindow {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,8 @@
  */
 package main;
 
+import data.Banco;
+import data.IBanco;
 import view.Login;
 
 
@@ -13,7 +15,13 @@ public class SistemaBiblioteca {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //MainWindow.main(null);
+        
+        try {
+            IBanco banco = Banco.getInstance("postgres", "1Z2ht6b.", "SistemaBiblioteca");
+        } catch(Exception erro) {
+            System.err.println(erro.getMessage());
+        }
+        
         Login.main(null);
     }
     

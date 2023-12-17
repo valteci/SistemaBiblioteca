@@ -12,7 +12,7 @@ public interface IAutor {
     public String getNome();
     public ArrayList<ILivro> getLivros();
     
-    public void setId();
-    public void setNome();
+    public void setId(int id);
+    public void setNome(String nome);
     public void setLivros(ArrayList<ILivro> livros);
 }

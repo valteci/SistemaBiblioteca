@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/model/IExeamplar.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/model/IController.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/data/IBanco.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/main/SistemaBiblioteca.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/model/Controller.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/view/TelaAutores.java</file>
+            <file>file:/C:/Users/junio/OneDrive/Área%20de%20Trabalho/SistemaBiblioteca/src/data/Banco.java</file>
         </group>
     </open-files>
 </project-private>
