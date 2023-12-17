@@ -5,29 +5,24 @@
 package model;
 
 
-public class Editora  implements IEditora {
+public class AreaDireito implements IAreaDireito {
     
     private int id = -1;
     private String nome = "";
-    private String local = "";
     
-    public Editora() {};
     
-    public Editora(
-        int idEditora,
-        String nome,
-        String local
-    ) {        
-        this.id = idEditora;
+    public AreaDireito() {};
+    
+    public AreaDireito(int id, String nome) {
+        this.id = id;
         this.nome = nome;
-        this.local = local;
     }
 
     @Override
     public int getId() {
         return id;
     }
-    
+
     @Override
     public void setId(int id) {
         this.id = id;
@@ -42,17 +37,6 @@ public class Editora  implements IEditora {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-    @Override
-    public String getLocal() {
-        return local;
-    }
-
-    @Override
-    public void setLocal(String local) {
-        this.local = local;
-    }
-    
     
     
 }

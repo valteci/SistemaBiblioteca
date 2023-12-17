@@ -9,8 +9,8 @@ import java.util.Iterator;
 
 public class Advogado extends Colaborador implements IAdvogado{
     
-    String numeroOAB = "";
-    Iterator<IReserva> reservas = null;
+    private String numeroOAB = "";
+    private Iterator<IReserva> reservas = null;
     
     public Advogado() {
         super();

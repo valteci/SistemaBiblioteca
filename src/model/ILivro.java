@@ -6,6 +6,7 @@ package model;
 
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public interface ILivro {
     public Date getAnoPublicacao();
@@ -14,16 +15,17 @@ public interface ILivro {
     public int getEdicao();
     public IAreaDireito getAreaDireito();
     public IEditora getEditora();
-    public ArrayList<IAutor> getAutoresLivro();
+    public Iterator<IAutor> getAutoresLivro();
     public boolean estaAbsoleto();
     
+    
     public void setAnoPublicacao(Date ano);
-    public void setISBN(String ISBN);
+    public void setISBN(String isbn);
     public void setTitulo(String titulo);
-    public void setEdicao(String edicao);
+    public void setEdicao(int edicao);
     public void setAreaDireito(IAreaDireito areaDireito);
     public void setEditora(IEditora editora);
-    public void setAutoresLivro(ArrayList<IAutor> autores);
+    public void setAutoresLivro(Iterator<IAutor> autores);
     
     
 }

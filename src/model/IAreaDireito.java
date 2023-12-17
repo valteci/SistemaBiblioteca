@@ -9,6 +9,6 @@ public interface IAreaDireito {
     public int getId();
     public String getNome();
     
-    public void setId();
-    public void setNome();
+    public void setId(int id);
+    public void setNome(String nome);
 }

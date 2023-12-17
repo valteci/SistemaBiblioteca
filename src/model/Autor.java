@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class Autor implements IAutor {
     
-    int id = -1;
-    String nome = "";
+    private int id = -1;
+    private String nome = "";
     
     public Autor() {
     }

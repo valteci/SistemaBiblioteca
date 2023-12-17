@@ -11,6 +11,6 @@ public interface IEditora {
     public String getLocal();
     
     public void setId(int id);
-    public void setNome(int nome);
-    public void setLocal(int local);
+    public void setNome(String nome);
+    public void setLocal(String local);
 }
