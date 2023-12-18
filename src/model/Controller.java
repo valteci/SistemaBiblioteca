@@ -600,7 +600,8 @@ public class Controller implements IController{
 
     @Override
     public void removerLivro(String ISBN) throws Exception {
-        
+        IBanco banco = Banco.getInstance();
+        banco.removerLivro(ISBN);
     }
 
     @Override
@@ -610,8 +611,12 @@ public class Controller implements IController{
     }
 
     @Override
-    public boolean existeLivro(String ISBN) throws Exception {
-        return false;
+    public boolean existeLivro(String ISBN) throws Exception {                                
+        IBanco banco = Banco.getInstance();        
+        ResultSet query = banco.getLivro(ISBN);
+        boolean existeLivro = query.next();
+        
+        return existeLivro;
     }
 
     
