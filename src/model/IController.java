@@ -58,8 +58,8 @@ public interface IController {
     public boolean existeExemplar(int id) throws Exception;
     
     //CRUD colaborador
-    public Iterator<Colaborador> getTodosColoboradores() throws Exception;
-    public Colaborador getColaborador(String matricula) throws Exception;
+    public Iterator<IColaborador> getTodosColoboradores() throws Exception;
+    public IColaborador getColaborador(String matricula) throws Exception;
     public void alterarColaborador(IColaborador novoColaborador) throws Exception;
     public void removerColaborador(String matricula) throws Exception;
     public void criarColaborador(IColaborador colaborador) throws Exception;

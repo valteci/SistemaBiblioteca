@@ -21,6 +21,7 @@ public interface IColaborador {
     public void setNome(String nome);
     public void setTelefone(String telefone);
     public void setLivrosEmprestimos(ArrayList<IEmprestimo> livros);
+    public void setEstaAtivo(boolean val);
     
     
 }

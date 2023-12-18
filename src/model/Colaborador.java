@@ -72,6 +72,11 @@ public abstract class Colaborador implements IColaborador {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+    
+    @Override
+    public void setEstaAtivo(boolean val) {
+        this.estaAtivo = val;
+    }
 
     @Override
     public void setLivrosEmprestimos(ArrayList<IEmprestimo> livros) {

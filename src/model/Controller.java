@@ -655,18 +655,77 @@ public class Controller implements IController{
     
     
     @Override
-    public Iterator<Colaborador> getTodosColoboradores() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Iterator<IColaborador> getTodosColoboradores() throws Exception {
+        ArrayList<IColaborador> resultado = new ArrayList<IColaborador>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet resultadoQuery = banco.getTodosColoboradores();
+        
+        while (resultadoQuery.next()) {
+            String matricula = resultadoQuery.getString("matricula");
+            String email = resultadoQuery.getString("email");
+            String nome = resultadoQuery.getString("nome");
+            String telefone = resultadoQuery.getString("telefone");
+            String status = resultadoQuery.getString("status");
+            String numeroOAB = resultadoQuery.getString("numeroOAB");
+            String tipoColaborador = resultadoQuery.getString("tipoColaborador");
+            
+            IColaborador colaborador = null;
+            
+            if (tipoColaborador.equalsIgnoreCase("advogado")) {                
+                Advogado advogado = new Advogado();
+                advogado.setNumeroOAB(numeroOAB);
+                colaborador = advogado;                
+            }
+            else if (tipoColaborador.equalsIgnoreCase("funcionario"))
+                colaborador = new Funcionario();
+            else
+                colaborador = new Estagiario();
+            
+            colaborador.setMatricula(matricula);
+            colaborador.setEmail(email);
+            colaborador.setNome(nome);
+            colaborador.setTelefone(telefone);
+            
+            if (status.equalsIgnoreCase("inativo"))
+                colaborador.setEstaAtivo(false);
+            else
+                colaborador.setEstaAtivo(true);
+             
+            resultado.add(colaborador);
+        }        
+        
+        return resultado.iterator();
     }
 
     @Override
-    public Colaborador getColaborador(String matricula) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public IColaborador getColaborador(String matricula) throws Exception {
+        IColaborador resultado = null;
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getTodosColoboradores();
+        boolean existeColaborador = resultadoQuery.next();
+        
+        if (! existeColaborador)
+            throw new Exception("Área do direito não cadastrada");
+        
+        String email = resultadoQuery.getString("email");
+        String nome = resultadoQuery.getString("nome");
+        String telefone = resultadoQuery.getString("telefone");
+        String status = resultadoQuery.getString("status");
+        String tipo = resultadoQuery.getString("tipoColaborador");
+        
+                        
+        
+        
+        
+        return resultado;
     }
 
     @Override
     public void alterarColaborador(IColaborador novoColaborador) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
