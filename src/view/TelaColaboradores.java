@@ -213,7 +213,17 @@ public class TelaColaboradores extends BaseWindow {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+        try {
+            IController controller = Controller.getInstance();
+            String matricula = getStringFromUser("Digite a matricula do colaborador: ");
+            if (matricula == null) return;
+                            
+            IColaborador colaborador = controller.getColaborador(matricula);
+            listarItem(table, colaborador);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed

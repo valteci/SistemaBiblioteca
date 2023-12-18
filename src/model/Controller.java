@@ -704,22 +704,41 @@ public class Controller implements IController{
         IColaborador resultado = null;
         IBanco banco = Banco.getInstance();
         
-        var resultadoQuery = banco.getTodosColoboradores();
+        var resultadoQuery = banco.getColaborador(matricula);
         boolean existeColaborador = resultadoQuery.next();
         
         if (! existeColaborador)
-            throw new Exception("Área do direito não cadastrada");
+            throw new Exception("Colaborador não cadastrado");
         
         String email = resultadoQuery.getString("email");
         String nome = resultadoQuery.getString("nome");
         String telefone = resultadoQuery.getString("telefone");
         String status = resultadoQuery.getString("status");
         String tipo = resultadoQuery.getString("tipoColaborador");
+        String oab = resultadoQuery.getString("numeroOAB");
         
                         
+        if (tipo.equalsIgnoreCase("advogado")) {
+            Advogado adv = new Advogado();
+            adv.setNumeroOAB(oab);
+            resultado = adv;
+        }
+        else if (tipo.equalsIgnoreCase("funcionario")) {
+            resultado = new Funcionario();
+        }
+        else
+            resultado = new Estagiario();
         
+        resultado.setEmail(email);
+        resultado.setNome(nome);
+        resultado.setTelefone(telefone);
+        resultado.setMatricula(matricula);
         
-        
+        if (status.equalsIgnoreCase("ativo"))
+            resultado.setEstaAtivo(true);
+        else
+            resultado.setEstaAtivo(false);
+                
         return resultado;
     }
 
