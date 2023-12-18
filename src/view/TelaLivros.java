@@ -39,7 +39,7 @@ public class TelaLivros extends BaseWindow {
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        bt_cadastrarColaborador = new javax.swing.JButton();
+        bt_cadastrar = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bt_alterarPorId = new javax.swing.JButton();
         bt_alterarSelecionado = new javax.swing.JButton();
@@ -47,11 +47,11 @@ public class TelaLivros extends BaseWindow {
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
-        jButton8 = new javax.swing.JButton();
+        bt_buscarPorAutor = new javax.swing.JButton();
         bt_buscarTodos = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        bt_buscarPorEditora = new javax.swing.JButton();
+        bt_buscarPorArea = new javax.swing.JButton();
+        bt_buscarPorTitulo = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lb_voltar = new javax.swing.JLabel();
         bt_voltar = new javax.swing.JButton();
@@ -106,14 +106,14 @@ public class TelaLivros extends BaseWindow {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 260, 180));
 
-        bt_cadastrarColaborador.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        bt_cadastrarColaborador.setText("CADASTRAR");
-        bt_cadastrarColaborador.addActionListener(new java.awt.event.ActionListener() {
+        bt_cadastrar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        bt_cadastrar.setText("CADASTRAR");
+        bt_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cadastrarColaboradorActionPerformed(evt);
+                bt_cadastrarActionPerformed(evt);
             }
         });
-        jPanel1.add(bt_cadastrarColaborador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 180, 140));
+        jPanel1.add(bt_cadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 180, 140));
 
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -154,14 +154,14 @@ public class TelaLivros extends BaseWindow {
 
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton8.setText("POR AUTOR");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorAutor.setText("POR AUTOR");
+        bt_buscarPorAutor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                bt_buscarPorAutorActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, 30));
+        jPanel7.add(bt_buscarPorAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, 30));
 
         bt_buscarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         bt_buscarTodos.setText("TODOS");
@@ -172,32 +172,32 @@ public class TelaLivros extends BaseWindow {
         });
         jPanel7.add(bt_buscarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton9.setText("POR EDITORA");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorEditora.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorEditora.setText("POR EDITORA");
+        bt_buscarPorEditora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                bt_buscarPorEditoraActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 30));
+        jPanel7.add(bt_buscarPorEditora, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 30));
 
-        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton10.setText("POR ÁREA");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorArea.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorArea.setText("POR ÁREA");
+        bt_buscarPorArea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                bt_buscarPorAreaActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 110, 30));
+        jPanel7.add(bt_buscarPorArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 110, 30));
 
-        jButton11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton11.setText("POR TÍTULO");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorTitulo.setText("POR TÍTULO");
+        bt_buscarPorTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                bt_buscarPorTituloActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 30));
+        jPanel7.add(bt_buscarPorTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 30));
 
         jPanel1.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 260, 180));
 
@@ -248,14 +248,25 @@ public class TelaLivros extends BaseWindow {
         TelaAlterarLivros.main(null);
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
-    private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
+    private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
         this.setVisible(false);
         TelaCadastrarLivros.main(null);
-    }//GEN-LAST:event_bt_cadastrarColaboradorActionPerformed
+    }//GEN-LAST:event_bt_cadastrarActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    private void bt_buscarPorAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorAutorActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            int idAutor = getIntFromUser("Digite o id do autor do livro: ");
+            if (idAutor == -1) return;
+                            
+            Iterator<ILivro> livros = controller.getLivroPorAutor(idAutor);
+            var livrosTabela = converIteratorToObject(livros);
+            listarItens(table, livrosTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorAutorActionPerformed
 
     private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed
         try {
@@ -269,17 +280,58 @@ public class TelaLivros extends BaseWindow {
         }
     }//GEN-LAST:event_bt_buscarTodosActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void bt_buscarPorEditoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorEditoraActionPerformed
+        
+        try {
+            IController controller = Controller.getInstance();
+            int idEditora = getIntFromUser("Digite o id da editora do livro: ");
+            if (idEditora == -1) return;
+            
+            if (! controller.existeEditora(idEditora))
+                throw new Exception("Esta editora não está cadastrada");
+                            
+            Iterator<ILivro> livros = controller.getLivroPorEditora(idEditora);
+            var livrosTabela = converIteratorToObject(livros);
+            listarItens(table, livrosTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorEditoraActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    private void bt_buscarPorAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorAreaActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            int idAreaDireito = getIntFromUser("Digite o id da área do direito do livro: ");
+            if (idAreaDireito == -1) return;
+            
+            if (! controller.existeAreaDireito(idAreaDireito))
+                throw new Exception("Esta área do direito não está cadastrada");
+                            
+            Iterator<ILivro> livros = controller.getLivroPorArea(idAreaDireito);
+            var livrosTabela = converIteratorToObject(livros);
+            listarItens(table, livrosTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorAreaActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    private void bt_buscarPorTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorTituloActionPerformed
+        
+        try {
+            IController controller = Controller.getInstance();
+            String titulo = getStringFromUser("Digite o título do livro:");
+            if (titulo == null) return;                        
+                            
+            Iterator<ILivro> livros = controller.getLivroPorTitulo(titulo.trim());
+            var livrosTabela = converIteratorToObject(livros);
+            listarItens(table, livrosTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorTituloActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,15 +372,15 @@ public class TelaLivros extends BaseWindow {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_alterarPorId;
     private javax.swing.JButton bt_alterarSelecionado;
+    private javax.swing.JButton bt_buscarPorArea;
+    private javax.swing.JButton bt_buscarPorAutor;
+    private javax.swing.JButton bt_buscarPorEditora;
+    private javax.swing.JButton bt_buscarPorTitulo;
     private javax.swing.JButton bt_buscarTodos;
-    private javax.swing.JButton bt_cadastrarColaborador;
+    private javax.swing.JButton bt_cadastrar;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
