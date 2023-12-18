@@ -84,4 +84,8 @@ public class Livro implements ILivro {
     public boolean estaAbsoleto() {
         return this.absoleto;
     }
+    
+    public void setAbsoleto(boolean val) {
+        this.absoleto = val;
+    }
 }

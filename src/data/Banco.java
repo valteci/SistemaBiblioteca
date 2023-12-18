@@ -266,6 +266,42 @@ public class Banco implements IBanco {
     }
 
     @Override
+    public ResultSet getLivroPorArea(int idArea) throws Exception {
+        return comando.executeQuery(String.format(
+                "select * from livro where idAreaDireito=%d;",
+                idArea
+            )
+        );
+    }
+
+    @Override
+    public ResultSet getLivroPorEditora(int idEditora) throws Exception {
+        return comando.executeQuery(String.format(
+                "select * from livro where idEditora=%d;",
+                idEditora
+            )
+        );
+    }
+
+    @Override
+    public ResultSet getLivroPorTitulo(String titulo) throws Exception {
+        return comando.executeQuery(String.format(
+                "select * from livro where titulo='%s';",
+                titulo
+            )
+        );
+    }
+
+    @Override
+    public ResultSet getLivroPorAutor(int idAutor) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
+    
+    
+
+    @Override
     public void alterarLivro(String isbnAtual, ILivro novoLivro) throws Exception {
         
         String novoIsbn = novoLivro.getISBN();
@@ -697,6 +733,17 @@ public class Banco implements IBanco {
             )
         );
     }
+    
+    @Override
+    public ResultSet getTodosAutoresDoLivro(String isbn) throws Exception {
+        return comando.executeQuery(String.format(
+                "select idautor from autor_livros where isbn='%s';",
+                isbn
+            )
+        );
+    }
+    
+    
 
     @Override
     public String getEmail() throws Exception {
@@ -733,25 +780,8 @@ public class Banco implements IBanco {
         return "jdbc:postgresql://localhost:5432/" + nomeDatabase;
     }
     
-    private ResultSet executarSelect(String sql) throws Exception {
-        
-        ResultSet resultadoConsulta;        
-        resultadoConsulta = comando.executeQuery(sql);
-        
-        return resultadoConsulta;
-    }
     
-    private void executarUpdate(String sql) throws Exception {
-        
-        comando.execute(sql);
-    }
     
-    private void executarDelete(String sql) {
-        
-    }
-    
-    private void executarCreate(String sql) {
-        
-    }
+
     
 }

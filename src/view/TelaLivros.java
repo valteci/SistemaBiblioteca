@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import java.util.Iterator;
+import model.Controller;
+import model.IAutor;
+import model.IController;
+import model.ILivro;
 import view.utils.*;
 
 public class TelaLivros extends BaseWindow {
@@ -30,7 +35,7 @@ public class TelaLivros extends BaseWindow {
         jPanelFundo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -43,7 +48,7 @@ public class TelaLivros extends BaseWindow {
         jLabel3 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jButton8 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        bt_buscarTodos = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
@@ -59,7 +64,7 @@ public class TelaLivros extends BaseWindow {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -78,7 +83,7 @@ public class TelaLivros extends BaseWindow {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 1150, 210));
 
@@ -161,14 +166,14 @@ public class TelaLivros extends BaseWindow {
         });
         jPanel7.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 230, 30));
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setText("TODOS");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarTodos.setText("TODOS");
+        bt_buscarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                bt_buscarTodosActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
+        jPanel7.add(bt_buscarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
         jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton9.setText("POR EDITORA");
@@ -255,9 +260,17 @@ public class TelaLivros extends BaseWindow {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            Iterator<ILivro> livros = controller.getTodosLivros();
+            var livrosTabela = converIteratorToObject(livros);
+            listarItens(table, livrosTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarTodosActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -310,14 +323,13 @@ public class TelaLivros extends BaseWindow {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_alterarPorId;
     private javax.swing.JButton bt_alterarSelecionado;
+    private javax.swing.JButton bt_buscarTodos;
     private javax.swing.JButton bt_cadastrarColaborador;
     private javax.swing.JButton bt_voltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
@@ -327,18 +339,43 @@ public class TelaLivros extends BaseWindow {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 
     @Override
     protected Object[] templedMethodObjectType(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        ILivro livro = (ILivro) obj;
+        String status = "ativo";
+        
+        if (livro.estaAbsoleto())
+            status = "inativo";
+        
+        Iterator<IAutor> autores = livro.getAutoresLivro();
+        String autores_str = "";
+        
+        while(autores.hasNext()) {
+            autores_str += autores.next().getNome();
+            
+            if (autores.hasNext())
+                autores_str += " / ";
+        }
+        
+        return new Object[] {
+            livro.getTitulo(),
+            livro.getAreaDireito().getNome(),
+            autores_str,
+            livro.getEdicao(),
+            livro.getAnoPublicacao(),
+            livro.getEditora().getNome(),
+            status,
+            livro.getISBN()
+        };
     }
 
 

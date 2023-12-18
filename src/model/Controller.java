@@ -8,6 +8,10 @@ import data.Banco;
 import data.IBanco;
 import java.util.ArrayList;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Iterator;
 
 
@@ -138,20 +142,22 @@ public class Controller implements IController{
         IEditora resultado = null;
         IBanco banco = Banco.getInstance();
         
-        var resultadoQuery = banco.getEditora(id);
-        boolean existeEditora = resultadoQuery.next();
+        
+        ResultSet queryEditora = banco.getEditora(id);
+        boolean existeEditora = queryEditora.next();
         
         if (! existeEditora)
             throw new Exception("Editora não cadastrada");
         
-        String nomeEditora = resultadoQuery.getString("nome");
-        String local = resultadoQuery.getString("localizacao");
+        String nomeEditora = queryEditora.getString("nome");
+        String local = queryEditora.getString("localizacao");
         
         Editora editora = new Editora(id, nomeEditora, local);
         
         resultado = editora;
         
         return resultado;
+        
     }
 
     @Override
@@ -271,32 +277,84 @@ public class Controller implements IController{
     
     @Override
     public Iterator<ILivro> getTodosLivros() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<ILivro> resultado = new ArrayList<ILivro>();
+        
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();
+        ArrayList<Integer> idAutores = new ArrayList<Integer>();
+        ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getTodosLivros();
+        
+        while (query.next()) {
+            
+            String isbn = query.getString("isbn");
+            String titulo = query.getString("titulo");
+            Date anoPublicacao = query.getDate("anoPublicacao");
+            int edicao = query.getInt("edicao");
+            int idEditora = query.getInt("idEditora");
+            int idAreaDireito = query.getInt("idAreaDireito");
+            boolean absoleto = query.getBoolean("estaAbsoleto");
+            
+            idEditoras.add(idEditora);
+            idAreasDireito.add(idAreaDireito);                                    
+            
+            Livro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAbsoleto(absoleto);            
+            
+            resultado.add(livro);            
+        }
+        
+        for (int i = 0; i < resultado.size(); i++) {
+            IEditora editora = getEditora(
+                idEditoras.get(i)
+            );
+            
+            IAreaDireito areaDireito = getAreaDireito(
+                    idAreasDireito.get(i)
+            );                        
+            
+            resultado.get(i).setEditora(editora);
+            resultado.get(i).setAreaDireito(areaDireito);
+        }
+        
+        for (var livro : resultado) {
+            Iterator<IAutor> autores = getAutoresDoLivro(livro);
+            livro.setAutoresLivro(autores);
+        }
+        
+        
+        return resultado.iterator();
     }
 
     @Override
     public Livro getLivro(String ISBN) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     @Override
     public void alterarLivro(ILivro novoLivro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void removerLivro(String ISBN) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void criarLivro(ILivro livro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public boolean existeLivro(String ISBN) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return false;
     }
 
     
@@ -367,7 +425,23 @@ public class Controller implements IController{
     
     @Override
     public Iterator<IAutor> getAutoresDoLivro(ILivro livro) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ArrayList<IAutor> autores = new ArrayList<IAutor>();
+        ArrayList<Integer> autoresId = new ArrayList<Integer>();
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet resultado = banco.getTodosAutoresDoLivro(livro.getISBN());
+        
+        while(resultado.next()) {
+            int idAutor = resultado.getInt("idAutor");                        
+            autoresId.add(idAutor);
+        }
+        
+        for (int id : autoresId) {
+            IAutor autor = getAutor(id);
+            autores.add(autor);
+        }
+        
+        return autores.iterator();
     }
 
     @Override
@@ -402,7 +476,40 @@ public class Controller implements IController{
     
     
     
+    private Date strToDate(String data) throws Exception {
+        
+        Date date = null;
+        SimpleDateFormat dataFormato = new SimpleDateFormat(
+                    "yyyy-MM-dd"
+        );
+        
+        date = dataFormato.parse(data);
+        
+        
+        return date;
+    }
     
-    
+    public Iterator<IAutor> getAutoresDoLivro(String isbn) throws Exception {
+        ArrayList<IAutor> autores = new ArrayList<IAutor>();
+        ArrayList<Integer> autoresId = new ArrayList<Integer>();
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet resultado = banco.getTodosAutoresDoLivro(isbn);
+        
+        while(resultado.next()) {
+            int idAutor = resultado.getInt("idAutor");
+            autoresId.add(idAutor);
+        }
+        
+        for (int id : autoresId) {
+            IAutor autor = getAutor(id);
+            autores.add(autor);
+        }
+        
+        return autores.iterator();
+    }
+
+
+
     
 }

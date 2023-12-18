@@ -5,8 +5,6 @@
 package data;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import model.IAdvogado;
 import model.IAreaDireito;
 import model.IAutor;
 import model.IColaborador;
@@ -54,6 +52,10 @@ public interface IBanco {
     //CRUD livro
     public ResultSet getTodosLivros() throws Exception;
     public ResultSet getLivro(String ISBN) throws Exception;
+    public ResultSet getLivroPorArea (int idArea) throws Exception;
+    public ResultSet getLivroPorEditora(int idEditora) throws Exception;
+    public ResultSet getLivroPorTitulo(String titulo) throws Exception;
+    public ResultSet getLivroPorAutor(int idAutor) throws Exception;
     public void alterarLivro(String isbnAtual, ILivro novoLivro) throws Exception;
     public void removerLivro(String ISBN) throws Exception;
     public void criarLivro(ILivro livro) throws Exception;
@@ -84,6 +86,10 @@ public interface IBanco {
     public void alterarReserva(String matriculaAdvogado, int idExemplar, IReserva novaReserva) throws Exception;
     public void removerReserva(IReserva reserva) throws Exception;
     public void criarReservar(IReserva reserva) throws Exception;
+    
+    //CRUD relacionamento livro_autor
+    public ResultSet getTodosAutoresDoLivro(String isbn) throws Exception;
+    
     
     //login
     public String getEmail() throws Exception;
