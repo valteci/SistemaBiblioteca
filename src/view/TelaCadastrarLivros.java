@@ -4,24 +4,31 @@
  */
 package view;
 
-import javax.swing.JComboBox;
+import java.util.ArrayList;
+import java.util.Date;
+import model.Controller;
+import model.IAreaDireito;
+import model.IAutor;
+import model.IController;
+import model.IEditora;
+import model.ILivro;
+import model.Livro;
 import view.utils.BaseWindow;
 
-/**
- *
- * @author junio
- */
+
 public class TelaCadastrarLivros extends BaseWindow {
 
-    /**
-     * Creates new form TelaCadastrarColaboradores
-     */
+    
+    private ArrayList<IAutor> autores = null;
+    
     public TelaCadastrarLivros() {
         super(null);
         initComponents();
         jPanel = jPanelFundo;
         aplicarConfiguracoes();
         carregarImagem(lb_voltar, "voltar.png");
+        
+        autores = new ArrayList<IAutor>();
     }
 
     /**
@@ -39,24 +46,24 @@ public class TelaCadastrarLivros extends BaseWindow {
         bt_voltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txt_matricula = new javax.swing.JTextField();
+        txt_isbn = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txt_nome = new javax.swing.JTextField();
+        txt_anoPublicacao = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txt_email = new javax.swing.JTextField();
-        txt_nome1 = new javax.swing.JTextField();
+        txt_idAreaDireito = new javax.swing.JTextField();
+        txt_titulo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cb_cargo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        cb_cargo1 = new javax.swing.JComboBox<>();
+        txt_edicao = new javax.swing.JTextField();
+        txt_idEditora = new javax.swing.JTextField();
         bt_cadastrar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        table = new javax.swing.JTable();
+        bt_removerAutor = new javax.swing.JButton();
+        bt_adicionarAutor = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -77,65 +84,55 @@ public class TelaCadastrarLivros extends BaseWindow {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 32)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CADASTRAR LIVRO");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1070, 80));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 1100, 80));
 
-        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 100));
+        jPanelFundo.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 100));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txt_matricula.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 320, 30));
+        txt_isbn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_isbn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, 320, 30));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setText("Ano Publicação:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 130, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 130, -1));
 
-        txt_nome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 320, 30));
+        txt_anoPublicacao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_anoPublicacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 320, 30));
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setText("ISBN:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 50, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, 50, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel5.setText("Edição:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 70, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 70, -1));
 
-        txt_email.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 320, 30));
+        txt_idAreaDireito.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_idAreaDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 320, 30));
 
-        txt_nome1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jPanel1.add(txt_nome1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 320, 30));
+        txt_titulo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 320, 30));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel7.setText("Título:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 60, -1));
-
-        cb_cargo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cb_cargo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_cargoItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(cb_cargo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 320, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 60, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setText("Editora:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 60, -1));
+        jLabel2.setText("ID da Editora:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 100, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel8.setText("Área Do Direito:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 120, -1));
+        jLabel8.setText("ID daÁrea Do Direito:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 150, -1));
 
-        cb_cargo1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        cb_cargo1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_cargo1ItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(cb_cargo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 320, 30));
+        txt_edicao.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_edicao, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 320, 30));
 
-        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 520, 310));
+        txt_idEditora.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jPanel1.add(txt_idEditora, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 320, 30));
+
+        jPanelFundo.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 560, 310));
 
         bt_cadastrar.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         bt_cadastrar.setText("CADASTRAR");
@@ -148,12 +145,9 @@ public class TelaCadastrarLivros extends BaseWindow {
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME"
@@ -167,17 +161,27 @@ public class TelaCadastrarLivros extends BaseWindow {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 400, 180));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("REMOVER AUTOR");
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 180, 40));
+        bt_removerAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_removerAutor.setText("REMOVER AUTOR");
+        bt_removerAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_removerAutorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(bt_removerAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 180, 40));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setText("ADICIONAR AUTOR");
-        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 43, 180, 40));
+        bt_adicionarAutor.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_adicionarAutor.setText("ADICIONAR AUTOR");
+        bt_adicionarAutor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_adicionarAutorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(bt_adicionarAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 43, 180, 40));
 
         jPanelFundo.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, 440, 310));
 
@@ -193,20 +197,100 @@ public class TelaCadastrarLivros extends BaseWindow {
 
     private void bt_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_voltarActionPerformed
         this.setVisible(false);
-        TelaMenuLivro.main(null);
+        TelaLivros.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
-        
+        try {
+            IController controller = Controller.getInstance();
+            String isbn = txt_isbn.getText();
+            String titulo = txt_titulo.getText();
+            Date anoPublicacao = strToDate(txt_anoPublicacao.getText());
+            int edicao = Integer.parseInt(txt_edicao.getText());
+            int idEditora = Integer.parseInt(txt_idEditora.getText());
+            int idAreaDireito = Integer.parseInt(txt_idAreaDireito.getText());                        
+            
+            IEditora editora = controller.getEditora(idEditora);
+            IAreaDireito areaDireito = controller.getAreaDireito(idAreaDireito);
+            
+            
+            ILivro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAreaDireito(areaDireito);
+            livro.setEditora(editora);
+            livro.setAutoresLivro(autores.iterator());
+            
+            controller.criarLivro(livro);
+            
+            exibirMensagemInformativa("Livro cadastrado com sucesso!");
+            txt_isbn.setText("");
+            txt_titulo.setText("");
+            txt_anoPublicacao.setText("");
+            txt_edicao.setText("");
+            txt_idEditora.setText("");
+            txt_idAreaDireito.setText("");
+            
+            autores.clear();
+            limparTabela(table);
+            
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
-    private void cb_cargoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_cargoItemStateChanged
-        
-    }//GEN-LAST:event_cb_cargoItemStateChanged
+    private void bt_adicionarAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_adicionarAutorActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            int idAutor = getIntFromUser("Digite o id do autor");
+            
+            if (! controller.existeAutor(idAutor))
+                throw new Exception("Autor não cadastrado");
+            
+            IAutor autor = controller.getAutor(idAutor);
+            
+            if (autores.contains(autor)) {
+                throw new Exception("Autor já está na lista");
+            }
+            autores.add(autor);
+            
+            var it = autores.iterator();
+            var itTabela = converIteratorToObject(it);
+            listarItens(table, itTabela);
+            
+        } catch (Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_adicionarAutorActionPerformed
 
-    private void cb_cargo1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_cargo1ItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_cargo1ItemStateChanged
+    private void bt_removerAutorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_removerAutorActionPerformed
+        
+        try {
+            IController controller = Controller.getInstance();
+            int idAutor = getIntFromUser("Digite o id do autor");
+            
+            if (! controller.existeAutor(idAutor))
+                throw new Exception("Autor não cadastrado");
+            
+            IAutor autor = controller.getAutor(idAutor);
+            
+            if (! autores.contains(autor)) {
+                throw new Exception("Autor não está na lista!");
+            }
+            
+            autores.remove(autor);
+            
+            var it = autores.iterator();
+            var itTabela = converIteratorToObject(it);
+            listarItens(table, itTabela);
+            
+        } catch (Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_removerAutorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,12 +329,10 @@ public class TelaCadastrarLivros extends BaseWindow {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_adicionarAutor;
     private javax.swing.JButton bt_cadastrar;
+    private javax.swing.JButton bt_removerAutor;
     private javax.swing.JButton bt_voltar;
-    private javax.swing.JComboBox<String> cb_cargo;
-    private javax.swing.JComboBox<String> cb_cargo1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -264,17 +346,25 @@ public class TelaCadastrarLivros extends BaseWindow {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_voltar;
-    private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_matricula;
-    private javax.swing.JTextField txt_nome;
-    private javax.swing.JTextField txt_nome1;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField txt_anoPublicacao;
+    private javax.swing.JTextField txt_edicao;
+    private javax.swing.JTextField txt_idAreaDireito;
+    private javax.swing.JTextField txt_idEditora;
+    private javax.swing.JTextField txt_isbn;
+    private javax.swing.JTextField txt_titulo;
     // End of variables declaration//GEN-END:variables
 
     @Override
     protected Object[] templedMethodObjectType(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        IAutor autor = (IAutor) obj;
+        
+        return new Object[] {
+            autor.getId(),
+            autor.getNome()
+        };
     }
 
 

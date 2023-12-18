@@ -5,6 +5,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class Autor implements IAutor {
@@ -54,6 +55,21 @@ public class Autor implements IAutor {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Autor other = (Autor) obj;
+        return id == other.id;
+    }
     
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
     
 }

@@ -605,7 +605,8 @@ public class Controller implements IController{
 
     @Override
     public void criarLivro(ILivro livro) throws Exception {
-        
+        IBanco banco = Banco.getInstance();
+        banco.criarLivro(livro);
     }
 
     @Override

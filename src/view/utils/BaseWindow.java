@@ -13,7 +13,9 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -339,5 +341,24 @@ public abstract class BaseWindow extends javax.swing.JFrame {
         return resultado.iterator();
     }
     
+    protected void limparTabela(JTable table) throws Exception {
+        var model = (DefaultTableModel) table.getModel();
+        
+        while (model.getRowCount()> 0)
+            model.removeRow(0);
+    }
+
+    protected Date strToDate(String data) throws Exception {
+        
+        Date date = null;
+        SimpleDateFormat dataFormato = new SimpleDateFormat(
+                    "yyyy-MM-dd"
+        );
+        
+        date = dataFormato.parse(data);
+        
+        
+        return date;
+    }
     
 }
