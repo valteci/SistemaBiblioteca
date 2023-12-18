@@ -66,10 +66,7 @@ public class TelaLivros extends BaseWindow {
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "TÍTULO", "ÁREA DO DIREITO", "AUTORES", "EDIÇÃO", "ANO DE PUBLICAÇÃO", "EDITORA", "STATUS", "ISBN"

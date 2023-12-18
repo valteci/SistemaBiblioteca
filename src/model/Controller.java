@@ -9,8 +9,6 @@ import data.IBanco;
 import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -279,8 +277,7 @@ public class Controller implements IController{
     public Iterator<ILivro> getTodosLivros() throws Exception {
         ArrayList<ILivro> resultado = new ArrayList<ILivro>();
         
-        ArrayList<Integer> idEditoras = new ArrayList<Integer>();
-        ArrayList<Integer> idAutores = new ArrayList<Integer>();
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();        
         ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
         
         IBanco banco = Banco.getInstance();
@@ -334,8 +331,267 @@ public class Controller implements IController{
 
     @Override
     public Livro getLivro(String ISBN) throws Exception {
-        return null;
+        Livro resultado = new Livro();
+        
+        int idEditora = -1;
+        int idAreaDireito = -1;
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getLivro(ISBN);
+        boolean existeLivro = query.next();
+        
+        if (! existeLivro)
+            throw new Exception("Livro não cadastrado");
+        
+        
+        String isbn = query.getString("isbn");
+        String titulo = query.getString("titulo");
+        Date anoPublicacao = query.getDate("anoPublicacao");
+        int edicao = query.getInt("edicao");
+        idEditora = query.getInt("idEditora");
+        idAreaDireito = query.getInt("idAreaDireito");
+        boolean absoleto = query.getBoolean("estaAbsoleto");
+        
+        resultado.setISBN(isbn);
+        resultado.setTitulo(titulo);
+        resultado.setAnoPublicacao(anoPublicacao);
+        resultado.setEdicao(edicao);
+        resultado.setAbsoleto(absoleto);
+        
+        IEditora editora = getEditora(idEditora);
+        IAreaDireito areaDireito = getAreaDireito(idAreaDireito);        
+        Iterator<IAutor> autores = getAutoresDoLivro(resultado);
+        
+        resultado.setAutoresLivro(autores);
+        resultado.setEditora(editora);
+        resultado.setAreaDireito(areaDireito);
+        
+        return resultado;
     }
+
+    @Override
+    public Iterator<ILivro> getLivroPorArea(int idArea) throws Exception {
+        ArrayList<ILivro> resultado = new ArrayList<ILivro>();
+        
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();
+        ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getLivroPorArea(idArea);
+        
+        while (query.next()) {
+            
+            String isbn = query.getString("isbn");
+            String titulo = query.getString("titulo");
+            Date anoPublicacao = query.getDate("anoPublicacao");
+            int edicao = query.getInt("edicao");
+            int idEditora = query.getInt("idEditora");            
+            boolean absoleto = query.getBoolean("estaAbsoleto");
+            
+            idEditoras.add(idEditora);
+            idAreasDireito.add(idArea);
+            
+            Livro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAbsoleto(absoleto);            
+            
+            resultado.add(livro);            
+        }
+        
+        for (int i = 0; i < resultado.size(); i++) {
+            IEditora editora = getEditora(
+                idEditoras.get(i)
+            );
+            
+            IAreaDireito areaDireito = getAreaDireito(
+                    idAreasDireito.get(i)
+            );                        
+            
+            resultado.get(i).setEditora(editora);
+            resultado.get(i).setAreaDireito(areaDireito);
+        }
+        
+        for (var livro : resultado) {
+            Iterator<IAutor> autores = getAutoresDoLivro(livro);
+            livro.setAutoresLivro(autores);
+        }
+        
+        
+        return resultado.iterator();
+    }
+
+    @Override
+    public Iterator<ILivro> getLivroPorEditora(int idEditora) throws Exception {
+        ArrayList<ILivro> resultado = new ArrayList<ILivro>();
+        
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();
+        ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getLivroPorEditora(idEditora);
+        
+        while (query.next()) {
+            
+            String isbn = query.getString("isbn");
+            String titulo = query.getString("titulo");
+            Date anoPublicacao = query.getDate("anoPublicacao");
+            int edicao = query.getInt("edicao");            
+            int idAreaDireito = query.getInt("idAreaDireito");
+            boolean absoleto = query.getBoolean("estaAbsoleto");
+            
+            idEditoras.add(idEditora);
+            idAreasDireito.add(idAreaDireito);                                    
+            
+            Livro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAbsoleto(absoleto);            
+            
+            resultado.add(livro);            
+        }
+        
+        for (int i = 0; i < resultado.size(); i++) {
+            IEditora editora = getEditora(
+                idEditoras.get(i)
+            );
+            
+            IAreaDireito areaDireito = getAreaDireito(
+                    idAreasDireito.get(i)
+            );                        
+            
+            resultado.get(i).setEditora(editora);
+            resultado.get(i).setAreaDireito(areaDireito);
+        }
+        
+        for (var livro : resultado) {
+            Iterator<IAutor> autores = getAutoresDoLivro(livro);
+            livro.setAutoresLivro(autores);
+        }
+        
+        
+        return resultado.iterator();
+    }
+
+    @Override
+    public Iterator<ILivro> getLivroPorTitulo(String titulo) throws Exception {
+        ArrayList<ILivro> resultado = new ArrayList<ILivro>();
+        
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();        
+        ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getLivroPorTitulo(titulo);
+        
+        while (query.next()) {
+            
+            String isbn = query.getString("isbn");            
+            Date anoPublicacao = query.getDate("anoPublicacao");
+            int edicao = query.getInt("edicao");
+            int idEditora = query.getInt("idEditora");
+            int idAreaDireito = query.getInt("idAreaDireito");
+            boolean absoleto = query.getBoolean("estaAbsoleto");
+            
+            idEditoras.add(idEditora);
+            idAreasDireito.add(idAreaDireito);                                    
+            
+            Livro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAbsoleto(absoleto);            
+            
+            resultado.add(livro);            
+        }
+        
+        for (int i = 0; i < resultado.size(); i++) {
+            IEditora editora = getEditora(
+                idEditoras.get(i)
+            );
+            
+            IAreaDireito areaDireito = getAreaDireito(
+                    idAreasDireito.get(i)
+            );                        
+            
+            resultado.get(i).setEditora(editora);
+            resultado.get(i).setAreaDireito(areaDireito);
+        }
+        
+        for (var livro : resultado) {
+            Iterator<IAutor> autores = getAutoresDoLivro(livro);
+            livro.setAutoresLivro(autores);
+        }
+        
+        
+        return resultado.iterator();
+    }
+
+    @Override
+    public Iterator<ILivro> getLivroPorAutor(int idAutor) throws Exception {
+        ArrayList<ILivro> resultado = new ArrayList<ILivro>();
+        
+        ArrayList<Integer> idEditoras = new ArrayList<Integer>();        
+        ArrayList<Integer> idAreasDireito = new ArrayList<Integer>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet query = banco.getLivroPorAutor(idAutor);
+        
+        while (query.next()) {
+            
+            String isbn = query.getString("isbn");
+            String titulo = query.getString("titulo");
+            Date anoPublicacao = query.getDate("anoPublicacao");
+            int edicao = query.getInt("edicao");
+            int idEditora = query.getInt("idEditora");
+            int idAreaDireito = query.getInt("idAreaDireito");
+            boolean absoleto = query.getBoolean("estaAbsoleto");
+            
+            idEditoras.add(idEditora);
+            idAreasDireito.add(idAreaDireito);                                    
+            
+            Livro livro = new Livro();
+            livro.setISBN(isbn);
+            livro.setTitulo(titulo);
+            livro.setAnoPublicacao(anoPublicacao);
+            livro.setEdicao(edicao);
+            livro.setAbsoleto(absoleto);            
+            
+            resultado.add(livro);            
+        }
+        
+        for (int i = 0; i < resultado.size(); i++) {
+            IEditora editora = getEditora(
+                idEditoras.get(i)
+            );
+            
+            IAreaDireito areaDireito = getAreaDireito(
+                    idAreasDireito.get(i)
+            );                        
+            
+            resultado.get(i).setEditora(editora);
+            resultado.get(i).setAreaDireito(areaDireito);
+        }
+        
+        for (var livro : resultado) {
+            Iterator<IAutor> autores = getAutoresDoLivro(livro);
+            livro.setAutoresLivro(autores);
+        }
+        
+        
+        return resultado.iterator();
+    }
+    
+    
 
     @Override
     public void alterarLivro(ILivro novoLivro) throws Exception {

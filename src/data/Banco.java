@@ -294,7 +294,14 @@ public class Banco implements IBanco {
 
     @Override
     public ResultSet getLivroPorAutor(int idAutor) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return comando.executeQuery(String.format(
+                "select l.isbn, l.titulo, l.anopublicacao, l.edicao, " + 
+                "l.ideditora, l.idareadireito, l.estaabsoleto from " + 
+                "autor_livros al inner join livro l on al.isbn = l.isbn " +
+                "where idAutor=%d ;",
+                idAutor
+            )
+        );
     }
     
     
