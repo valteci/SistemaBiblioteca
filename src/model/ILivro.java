@@ -26,6 +26,7 @@ public interface ILivro {
     public void setAreaDireito(IAreaDireito areaDireito);
     public void setEditora(IEditora editora);
     public void setAutoresLivro(Iterator<IAutor> autores);
+    public void setEstaAbsoleto(boolean val);
     
     
 }

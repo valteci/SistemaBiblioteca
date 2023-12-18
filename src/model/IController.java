@@ -44,7 +44,7 @@ public interface IController {
     public Iterator<ILivro> getLivroPorEditora(int idEditora) throws Exception;
     public Iterator<ILivro> getLivroPorTitulo(String titulo) throws Exception;
     public Iterator<ILivro> getLivroPorAutor(int idAutor) throws Exception;
-    public void alterarLivro(ILivro novoLivro) throws Exception;
+    public void alterarLivro(String isbnAtual, ILivro novoLivro) throws Exception;
     public void removerLivro(String ISBN) throws Exception;
     public void criarLivro(ILivro livro) throws Exception;
     public boolean existeLivro(String ISBN) throws Exception;

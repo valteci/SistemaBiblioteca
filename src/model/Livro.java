@@ -88,4 +88,11 @@ public class Livro implements ILivro {
     public void setAbsoleto(boolean val) {
         this.absoleto = val;
     }
+
+    @Override
+    public void setEstaAbsoleto(boolean val) {
+        this.absoleto = val;
+    }
+    
+    
 }

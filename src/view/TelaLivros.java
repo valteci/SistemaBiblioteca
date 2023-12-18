@@ -290,8 +290,24 @@ public class TelaLivros extends BaseWindow {
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
-        this.setVisible(false);
-        TelaAlterarLivros.main(null);
+        
+        try {        
+            Iterator<Object> linha = getLinhaSelecionada(table);
+
+            if (! linha.hasNext())
+                throw new Exception("Selecione um registro primeiro");
+            
+            for (int i = 0; i < 7 && linha.hasNext(); i++) {
+                linha.next();                
+            }
+
+            this.setVisible(false);
+            TelaAlterarLivros.main(linha.next());
+        
+        
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed

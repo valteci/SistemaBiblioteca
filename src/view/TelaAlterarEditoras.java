@@ -11,10 +11,7 @@ import model.IController;
 import model.IEditora;
 import view.utils.BaseWindow;
 
-/**
- *
- * @author junio
- */
+
 public class TelaAlterarEditoras extends BaseWindow {
 
     /**

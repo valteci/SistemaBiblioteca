@@ -594,8 +594,9 @@ public class Controller implements IController{
     
 
     @Override
-    public void alterarLivro(ILivro novoLivro) throws Exception {
-        
+    public void alterarLivro(String isbnAtual, ILivro novoLivro) throws Exception {
+        IBanco banco = Banco.getInstance();
+        banco.alterarLivro(isbnAtual, novoLivro);
     }
 
     @Override
