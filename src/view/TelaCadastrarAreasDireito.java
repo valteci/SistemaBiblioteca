@@ -5,6 +5,12 @@
 package view;
 
 import javax.swing.JComboBox;
+import model.AreaDireito;
+import model.Autor;
+import model.Controller;
+import model.IAreaDireito;
+import model.IAutor;
+import model.IController;
 import view.utils.BaseWindow;
 
 /**
@@ -96,7 +102,19 @@ public class TelaCadastrarAreasDireito extends BaseWindow {
     }//GEN-LAST:event_bt_voltarActionPerformed
 
     private void bt_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarActionPerformed
-        
+        try {
+            IController controller = Controller.getInstance();
+            String nomeAreaDireito = txt_nome.getText();
+            IAreaDireito areaAutor = new AreaDireito(nomeAreaDireito);
+            controller.criarAreaDireito(areaAutor);
+            
+            exibirMensagemInformativa("Área do direito cadastrada com sucesso!");
+            
+            txt_nome.setText("");
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_cadastrarActionPerformed
 
     /**

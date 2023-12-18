@@ -194,32 +194,77 @@ public class Controller implements IController{
     
     @Override
     public Iterator<IAreaDireito> getTodasAreasDireito() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        ArrayList<IAreaDireito> resultado = new ArrayList<IAreaDireito>();
+        
+        IBanco banco = Banco.getInstance();
+        
+        ResultSet resultadoQuery = banco.getTodasAreasDireito();
+        
+        while (resultadoQuery.next()) {
+            int id = resultadoQuery.getInt("idAreaDireito");
+            String nome = resultadoQuery.getString("nome");
+            
+            
+            AreaDireito areaDireito = new AreaDireito(id, nome);
+            resultado.add(areaDireito);
+        }        
+        
+        return resultado.iterator();
     }
 
     @Override
     public IAreaDireito getAreaDireito(int id) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IAreaDireito resultado = null;
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getAreaDireito(id);
+        boolean existeAreaDireito = resultadoQuery.next();
+        
+        if (! existeAreaDireito)
+            throw new Exception("Área do direito não cadastrada");
+        
+        String nome = resultadoQuery.getString("nome");
+        
+        
+        AreaDireito areaDireito = new AreaDireito(id, nome);
+        
+        resultado = areaDireito;
+        
+        return resultado;
     }
 
     @Override
     public void alterarAreaDireito(IAreaDireito novaAreaDireito) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        
+        if (novaAreaDireito.getNome().equals("")) {            
+            throw new Exception("Selecione ao menos 1 dado para alterar");
+        }
+        
+        banco.alterarAreaDireito(novaAreaDireito);
     }
 
     @Override
     public void removerAreaDireito(int idAreaDireito) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        banco.removerAreaDireito(idAreaDireito);
     }
 
     @Override
     public void criarAreaDireito(IAreaDireito areaDireito) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        banco.criarAreaDireito(areaDireito);
     }
 
     @Override
     public boolean existeAreaDireito(int idAreaDireito) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IBanco banco = Banco.getInstance();
+        
+        var resultadoQuery = banco.getAreaDireito(idAreaDireito);
+        boolean existeAreaDireito = resultadoQuery.next();
+        
+        return existeAreaDireito;
     }
 
     

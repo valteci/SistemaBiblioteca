@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import java.util.Iterator;
+import model.Controller;
+import model.IAreaDireito;
+import model.IAutor;
+import model.IController;
 import view.utils.*;
 
 public class TelaAreasDireito extends BaseWindow {
@@ -30,14 +35,14 @@ public class TelaAreasDireito extends BaseWindow {
         jPanelFundo = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bt_deletarPorId = new javax.swing.JButton();
+        bt_deletarSelecionado = new javax.swing.JButton();
         bt_cadastrarColaborador = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        bt_buscarPorId = new javax.swing.JButton();
+        bt_buscarTodos = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bt_alterarPorId = new javax.swing.JButton();
         bt_alterarSelecionado = new javax.swing.JButton();
@@ -57,12 +62,9 @@ public class TelaAreasDireito extends BaseWindow {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "ID", "NOME DA ÁREA"
@@ -76,29 +78,29 @@ public class TelaAreasDireito extends BaseWindow {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1150, 210));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("DELETAR POR ID");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bt_deletarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_deletarPorId.setText("DELETAR POR ID");
+        bt_deletarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bt_deletarPorIdActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel3.add(bt_deletarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton3.setText("DELETAR SELECIONADO");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        bt_deletarSelecionado.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_deletarSelecionado.setText("DELETAR SELECIONADO");
+        bt_deletarSelecionado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                bt_deletarSelecionadoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel3.add(bt_deletarSelecionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 60, 260, 140));
 
@@ -113,23 +115,23 @@ public class TelaAreasDireito extends BaseWindow {
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton6.setText("BUSCAR POR ID");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarPorId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarPorId.setText("BUSCAR POR ID");
+        bt_buscarPorId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                bt_buscarPorIdActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
+        jPanel5.add(bt_buscarPorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 220, 40));
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton7.setText("BUSCAR TODOS");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        bt_buscarTodos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        bt_buscarTodos.setText("BUSCAR TODOS");
+        bt_buscarTodos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                bt_buscarTodosActionPerformed(evt);
             }
         });
-        jPanel5.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
+        jPanel5.add(bt_buscarTodos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 220, 40));
 
         jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 260, 140));
 
@@ -204,21 +206,78 @@ public class TelaAreasDireito extends BaseWindow {
         TelaMenuLivro.main(null);
     }//GEN-LAST:event_bt_voltarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void bt_deletarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deletarPorIdActionPerformed
+        try {
+            
+            IController controller = Controller.getInstance();
+            int idAreaDireito = getIntFromUser("Digite o id da área do direito");
+            
+            if (idAreaDireito == -1) return;
+            
+            if (! controller.existeAreaDireito(idAreaDireito))
+                throw new Exception("Área do direito não cadastrada!");
+            
+            controller.removerAutor(idAreaDireito);
+            exibirMensagemInformativa("Área do direito deletada com sucesso");
+            
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_deletarPorIdActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void bt_deletarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deletarSelecionadoActionPerformed
+        try {
+            
+            if (!exibirMensagemConfirmacao("Tem certeza que deseja excluir esta Área do direito?"))
+                return;
+            
+            Iterator<Object> linha = getLinhaSelecionada(table);
+            
+            if (! linha.hasNext())
+                throw new Exception("Selecione um registro primeiro");
+            
+            int idAreaDireito = Integer.parseInt(linha.next().toString());
+            
+            IController controller = Controller.getInstance();
+            if (! controller.existeAreaDireito(idAreaDireito))
+                throw new Exception("Área do direito não cadastrada!");
+            
+            controller.removerAreaDireito(idAreaDireito);
+            
+            exibirMensagemInformativa("Área do direito deletada com sucesso!");
+            
+            
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
+    }//GEN-LAST:event_bt_deletarSelecionadoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void bt_buscarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarPorIdActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            int idAreaDireito = getIntFromUser("Digite o id da área do direito: ");
+            if (idAreaDireito == -1) return;
+                            
+            IAreaDireito areaDireito = controller.getAreaDireito(idAreaDireito);
+            listarItem(table, areaDireito);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarPorIdActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void bt_buscarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_buscarTodosActionPerformed
+        try {
+            IController controller = Controller.getInstance();
+            Iterator<IAreaDireito> areasDireito = controller.getTodasAreasDireito();
+            var areasDireitoTabela = converIteratorToObject(areasDireito);
+            listarItens(table, areasDireitoTabela);
+            
+        } catch(Exception erro) {
+            exibirMesagemDeErro(erro.getMessage());
+        }
+    }//GEN-LAST:event_bt_buscarTodosActionPerformed
 
     private void bt_alterarPorIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarPorIdActionPerformed
         this.setVisible(false);
@@ -226,8 +285,20 @@ public class TelaAreasDireito extends BaseWindow {
     }//GEN-LAST:event_bt_alterarPorIdActionPerformed
 
     private void bt_alterarSelecionadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_alterarSelecionadoActionPerformed
-        this.setVisible(false);
-        TelaAlterarAreasDireito.main(null);
+        
+        try {        
+            Iterator<Object> linha = getLinhaSelecionada(table);
+
+            if (! linha.hasNext())
+                throw new Exception("Selecione um registro primeiro");
+
+            this.setVisible(false);
+            TelaAlterarAreasDireito.main(linha.next());
+        
+        
+        } catch(Exception e) {
+            exibirMesagemDeErro(e.getMessage());
+        }
     }//GEN-LAST:event_bt_alterarSelecionadoActionPerformed
 
     private void bt_cadastrarColaboradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrarColaboradorActionPerformed
@@ -280,12 +351,12 @@ public class TelaAreasDireito extends BaseWindow {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_alterarPorId;
     private javax.swing.JButton bt_alterarSelecionado;
+    private javax.swing.JButton bt_buscarPorId;
+    private javax.swing.JButton bt_buscarTodos;
     private javax.swing.JButton bt_cadastrarColaborador;
+    private javax.swing.JButton bt_deletarPorId;
+    private javax.swing.JButton bt_deletarSelecionado;
     private javax.swing.JButton bt_voltar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -298,13 +369,18 @@ public class TelaAreasDireito extends BaseWindow {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelFundo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lb_voltar;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 
     @Override
     protected Object[] templedMethodObjectType(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        IAreaDireito areaDireito = (IAreaDireito) obj;
+        
+        return new Object[] {
+            areaDireito.getId(),
+            areaDireito.getNome()
+        };
     }
 
 

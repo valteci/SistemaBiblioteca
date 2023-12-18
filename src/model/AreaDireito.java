@@ -13,6 +13,10 @@ public class AreaDireito implements IAreaDireito {
     
     public AreaDireito() {};
     
+    public AreaDireito(String nome) {
+        this.nome = nome;
+    }
+    
     public AreaDireito(int id, String nome) {
         this.id = id;
         this.nome = nome;
